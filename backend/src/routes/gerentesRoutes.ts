@@ -1,13 +1,13 @@
 
 import { Router } from 'express';
 import cors from 'cors';
-import { ChangePasswordForModel,createUserGerente, gerenteLogin, getGerente, getGerentes, getUserGerente, getUserGerenteId, verifyTwoFACode, sendSMS } from '../controllers/gerenteController';
+import { ChangePasswordForModel,createUserGerente, gerenteLogin, getGerente, getGerentes, getUserGerente, getUserGerenteId, verifyTwoFACode } from '../controllers/gerenteController';
 import { validate } from '../middleware/validate';
 import GerenteCreateInputSchema from './../../prisma/validateSchema';
 import { sendPassword } from '../email/sendPasswordByEmailGerente';
 import { ensureAuthenticated } from '../middleware/ensureAuthenticate.ts/autheticate';
 import { refreshTokenController } from '../provider/RefreshTokenUserController';
-import { sendMail } from '../email/confirmationEmail';
+import { sendMail, sendSMS } from '../email/confirmationEmail';
 
 export const gerentesRouter = Router();
 // Validação usando Zod antes de criar um gerente
