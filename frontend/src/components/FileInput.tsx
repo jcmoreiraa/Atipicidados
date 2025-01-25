@@ -20,9 +20,10 @@ export default function FileInput(props: JSX.IntrinsicAttributes & ClassAttribut
     }
   };
 
-  const displayValue = props.value
-    ? props.value.replace(/^uploads\//, "") 
-    : fileName || props.placeholder;
+  const displayValue =
+    props.value && typeof props.value === "string"
+      ? props.value.replace(/^uploads\//, "")
+      : fileName || props.placeholder;
 
   return (
     <div className="relative inline-block text-left w-full" {...props}>
