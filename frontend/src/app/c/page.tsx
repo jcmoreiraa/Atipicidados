@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import logos from "../../public/images/logos.svg";
+import logos from "../../../public/images/logos.svg";
 import { SlashedEyeIcon, OpenEyeIcon } from "../../../public/icons/Icons";
 import { useState } from "react";
 import Link from "next/link";
