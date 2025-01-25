@@ -5,9 +5,17 @@ import { Card } from "@/components/Card";
 import NavBarGerente from "@/components/NavBarGerente";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
-export default function Home() {
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Home/>
+    </Suspense>
+  )
+}
+
+function Home() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const email = searchParams.get("email");
