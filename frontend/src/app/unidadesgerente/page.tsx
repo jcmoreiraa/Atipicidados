@@ -1,7 +1,7 @@
 "use client";
 import { CardUnidade } from "@/components/Card";
 import NavBarGerente from "@/components/NavBarGerente";
-import Link from "next/link";
+// import Link from "next/link";
 import { useEffect, useState } from "react";
 import SearchIcon from "@/assets/icons/search";
 import { useRouter } from "next/navigation";
@@ -95,8 +95,8 @@ export default function Home() {
         <div className="mt-[28px] grid grid-cols-4 gap-2 w-full max-w-full">
           {unidades.length > 0 ? (
             unidades.map((unidade) => (
-              <button onClick={() => { urlToUnidadePage(unidade) }} className="text-left">
-                <CardUnidade key={unidade.id} title={unidade.nome} endereco={unidade.endereco} />
+              <button key={unidade.id} onClick={() => { urlToUnidadePage(unidade) }} className="text-left">
+                <CardUnidade title={unidade.nome} endereco={unidade.endereco} />
               </button>
             ))
           ) : (
