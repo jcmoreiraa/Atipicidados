@@ -98,34 +98,6 @@ export default function Home() {
 
     return (
         <main className="flex flex-col min-h-screen">
-            {getAcesso()}
-            {/* <button onClick={() => { console.log(pacienteInfo) }}>Mostrar pacienteInfo</button> */}
-            <div className="flex flex-col gap-[20px] px-5 md:px-[108px] pt-[33px] pb-[50px] text-[14px]">
-                <div className="flex gap-[20px]">
-                    <div className="box w-full flex flex-col gap-7">
-                        <h2>Cadastro de {pacienteInfo ? pacienteInfo.nome : "Nome"}</h2>
-
-                        <div className="flex flex-col gap-8 pb-2">
-                            <div className="flex items-center gap-[20px]">
-                                <Image
-                                    src={perfil}
-                                    alt='foto de perfil <nome do usuario>'
-                                    width={68}
-                                    height={68} />
-
-                                <div>
-                                    <p className="titulo">Nome e Sobrenome:</p>
-                                    <p>{pacienteInfo ? pacienteInfo.nome : "Nome"}</p>
-                                </div>
-                            </div>
-
-                            <div className="flex flex-col md:flex-row gap-6">
-                                <div className="flex flex-col gap-6">
-                                    <div>
-                                        <p className="titulo">RG:</p>
-                                        <p>{pacienteInfo ? pacienteInfo.rg : "RG"}</p>
-                                    </div>
-
       <div className="flex bg-blue-100 w-[40%] flex-col justify-center items-center gap-10">
         <Image
           src={logos}
