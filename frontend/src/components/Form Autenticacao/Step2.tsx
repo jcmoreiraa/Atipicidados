@@ -74,6 +74,8 @@ const Step2: React.FC<{
     });
   }, [receivedFormData])
 
+  const [outroResponsavel, setOutroResponsavel] = useState("");
+
   const handleInputChange1 = (key: string, value: string) => {
     setStep21((prevState) => ({
       ...prevState,
@@ -182,18 +184,18 @@ const Step2: React.FC<{
             <div className='flex flex-col gap-[12px]'>
               <h4 className='pl-2'>Informações do responsável</h4>
 
-              <TextInput placeholder="Nome completo do responsável" />
+              <TextInput value={outroResponsavel} placeholder="Nome completo do responsável" />
 
               <div className='flex flex-col md:flex-row w-full gap-[12px]'>
                 <DateInput />
-                <TextInput placeholder='RG do responsável' className='min-w-[220px]' />
-                <TextInput placeholder='CPF do responsável' className='min-w-[220px]' />
+                <TextInput value={outroResponsavel} placeholder='RG do responsável' className='min-w-[220px]' />
+                <TextInput value={outroResponsavel} placeholder='CPF do responsável' className='min-w-[220px]' />
               </div>
 
               <div className='flex flex-col md:flex-row w-full gap-[12px]'>
                 <SelectInput placeholder={"Escolaridade"} options={["Ensino fundamental incompleto", "Ensino fundamental completo", "Ensino médio completo", "Técnico/profissionalizante", "Cursando ensino superior", "Ensino superior completo"]} />
                 <NumberInput placeholder="Telefone de contato" />
-                <TextInput placeholder="E-mail" />
+                <TextInput value={outroResponsavel} placeholder="E-mail" />
               </div>
 
             </div>
