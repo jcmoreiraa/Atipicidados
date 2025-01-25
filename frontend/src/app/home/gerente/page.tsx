@@ -270,8 +270,8 @@ export default function Home() {
         <div className="mt-[28px] grid grid-cols-4 gap-2 w-full max-w-full">
           {filteredMembers.map((member) => (
             // eslint-disable-next-line react/jsx-key
-            <button onClick={() => { urlToMemberPage(member) }} className="text-left">
-              <Card key={member.id} id={member.id} title={member.nome} cpf={member.cpf} acesso={member.type} />
+            <button key={member.id} onClick={() => { urlToMemberPage(member) }} className="text-left">
+              <Card id={member.id} title={member.nome} cpf={member.cpf} acesso={member.type} />
             </button>
           ))}
         </div>

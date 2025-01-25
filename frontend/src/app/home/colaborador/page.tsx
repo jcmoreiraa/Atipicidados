@@ -110,16 +110,16 @@ export default function Home() {
       <div className="px-5 md:px-[84px] py-[40px]">
         <div className="flex flex-col">
           <div className="flex w-full justify-between">
-              <h2 className="mb-7">Página inicial</h2>
-              <div className="flex text-[13px] md:text-[16px] gap-[10px]">
-                <button className="botao">
-                  <Link href='/cadastro/paciente' className="flex flex-row gap-1 items-center">
-                    <PlusIcon style={{ color: 'var(--texto-botao)' }} />
-                    <p>Novo Cadastro</p>
-                  </Link>
-                </button>
-              </div>
+            <h2 className="mb-7">Página inicial</h2>
+            <div className="flex text-[13px] md:text-[16px] gap-[10px]">
+              <button className="botao">
+                <Link href='/cadastro/paciente' className="flex flex-row gap-1 items-center">
+                  <PlusIcon style={{ color: 'var(--texto-botao)' }} />
+                  <p>Novo Cadastro</p>
+                </Link>
+              </button>
             </div>
+          </div>
           <div className="flex flex-col w-full">
             <div className="flex flex-col gap-2 mb-4">
               <h3>Minha unidade (Nome da Unidade)</h3>
@@ -131,10 +131,10 @@ export default function Home() {
               <input
                 type="text"
                 className='input w-full h-[35px] mb-2 pb-1'
-                placeholder="Buscar membro..." 
+                placeholder="Buscar membro..."
                 value={searchBy}
                 onChange={handleSearchBar}
-                />
+              />
 
               <button
                 type="button"
@@ -227,7 +227,7 @@ export default function Home() {
         <div className="mt-[28px] grid grid-cols-4 gap-2 w-full max-w-full">
           {filteringMembers.map((member) => (
             <button type="button" onClick={() => { urlToMemberPage(member) }} key={member.id} className="text-left">
-              <Card key={member.id} title={member.nome} cpf={member.cpf} acesso={member.type} />
+              <Card title={member.nome} cpf={member.cpf} acesso={member.type} />
             </button>
           ))}
         </div>
