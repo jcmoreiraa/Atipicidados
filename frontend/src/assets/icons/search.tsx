@@ -1,6 +1,6 @@
 import * as React from "react"
 
-function SvgComponent({ color = "#ECECEF", ...props }) {
+function SvgComponent({ color = "#ECECEF" }) {
   return (
     <svg
       width={19}
@@ -8,7 +8,6 @@ function SvgComponent({ color = "#ECECEF", ...props }) {
       viewBox="0 0 19 19"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      {...props}
     >
       <path
         fillRule="evenodd"
