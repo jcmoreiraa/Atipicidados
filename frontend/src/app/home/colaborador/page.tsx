@@ -2,23 +2,31 @@
 import PlusIcon from "@/assets/icons/plus";
 import SearchIcon from "@/assets/icons/search";
 import { Card } from "@/components/Card";
-import NavBar from "@/components/NavBar";
 import NavBarColaborador from "@/components/NavBarColaborador";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
-export default function Home() {
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Home/>
+    </Suspense>
+  )
+}
+
+function Home() {
   const router = useRouter();
 
   const searchParams = useSearchParams();
   const email = searchParams.get("email");
   const id = searchParams.get("id");
+
   const [userEmail, setUserEmail] = useState("");
   const [userID, setUserID] = useState("");
   const [colaboradorInfo, setColaboradorInfo] = useState<any | null>(null);
+
   const [pacientes, setPacientes] = useState<any[]>([]);
-  // const [pacientesAutenticados, setPacientesAutenticados] = useState<any[]>([]);
   const [gerentes, setGerentes] = useState<any[]>([]);
   const [colaboradores, setColaboradores] = useState<any[]>([]);
 
