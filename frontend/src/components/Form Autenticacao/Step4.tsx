@@ -286,7 +286,7 @@ const Step4: React.FC<{
       <div className='relative text-[13px] md:text-[16px] flex flex-row justify-between items-center mx-[147px]'>
         <button onClick={prevStep} className='botao'>Página anterior</button>
 
-        <div className='hidden md: flex absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+        <div className='md: flex absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
           4 de 4
         </div>
 
