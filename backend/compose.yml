@@ -1,20 +1,6 @@
-dockversion: '3.9'
+version: "3.9"
 
 services:
-  db:
-    container_name: db
-    image: postgres:12
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
-    ports:
-      - "5432:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
-
   backend:
     container_name: backend
     image: backend
@@ -24,14 +10,12 @@ services:
     ports:
       - "3002:3002"
     environment:
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres?schema=public
+      - DATABASE_URL=postgresql://admin:1hEZ9ykWeANxPe1cm7XSMx0uW2Bvw8xS@dpg-cuahjl23esus73ems8s0-a.oregon-postgres.render.com/atipicidados_database
       - TZ=America/Sao_Paulo 
-    depends_on:
-      - db
     volumes:
-     - ./uploads:/backend/uploads
-     - /etc/localtime:/etc/localtime:ro
-     - /etc/timezone:/etc/timezone:ro
+      - ./uploads:/backend/uploads
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
 
   pgadmin:
     container_name: pgadmin
@@ -43,7 +27,7 @@ services:
     ports:
       - "8080:80"
     depends_on:
-      - db
+      # Remova a dependência do `db` se ele não existir mais.
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
@@ -61,9 +45,6 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
-
-volumes:
-  pgdata:
 
 networks:
   app-network:
