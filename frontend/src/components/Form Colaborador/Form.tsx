@@ -20,7 +20,7 @@ const Form: React.FC = () => {
     formacao: null,
     genero: null,
     raca: null,
-    // unidadeId: null,
+    unidadeId: null,
   });
 
   const updateForm = (data: any) => {
