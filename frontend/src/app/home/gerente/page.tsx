@@ -5,9 +5,17 @@ import { Card } from "@/components/Card";
 import NavBarGerente from "@/components/NavBarGerente";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
-export default function Home() {
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Home/>
+    </Suspense>
+  )
+}
+
+function Home() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const email = searchParams.get("email");
@@ -270,8 +278,8 @@ export default function Home() {
         <div className="mt-[28px] grid grid-cols-4 gap-2 w-full max-w-full">
           {filteredMembers.map((member) => (
             // eslint-disable-next-line react/jsx-key
-            <button onClick={() => { urlToMemberPage(member) }} className="text-left">
-              <Card key={member.id} id={member.id} title={member.nome} cpf={member.cpf} acesso={member.type} />
+            <button key={member.id} onClick={() => { urlToMemberPage(member) }} className="text-left">
+              <Card id={member.id} title={member.nome} cpf={member.cpf} acesso={member.type} />
             </button>
           ))}
         </div>

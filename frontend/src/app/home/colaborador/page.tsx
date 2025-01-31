@@ -2,23 +2,31 @@
 import PlusIcon from "@/assets/icons/plus";
 import SearchIcon from "@/assets/icons/search";
 import { Card } from "@/components/Card";
-import NavBar from "@/components/NavBar";
 import NavBarColaborador from "@/components/NavBarColaborador";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
-export default function Home() {
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Home/>
+    </Suspense>
+  )
+}
+
+function Home() {
   const router = useRouter();
 
   const searchParams = useSearchParams();
   const email = searchParams.get("email");
   const id = searchParams.get("id");
+
   const [userEmail, setUserEmail] = useState("");
   const [userID, setUserID] = useState("");
   const [colaboradorInfo, setColaboradorInfo] = useState<any | null>(null);
+
   const [pacientes, setPacientes] = useState<any[]>([]);
-  // const [pacientesAutenticados, setPacientesAutenticados] = useState<any[]>([]);
   const [gerentes, setGerentes] = useState<any[]>([]);
   const [colaboradores, setColaboradores] = useState<any[]>([]);
 
@@ -110,16 +118,16 @@ export default function Home() {
       <div className="px-5 md:px-[84px] py-[40px]">
         <div className="flex flex-col">
           <div className="flex w-full justify-between">
-              <h2 className="mb-7">Página inicial</h2>
-              <div className="flex text-[13px] md:text-[16px] gap-[10px]">
-                <button className="botao">
-                  <Link href='/cadastro/paciente' className="flex flex-row gap-1 items-center">
-                    <PlusIcon style={{ color: 'var(--texto-botao)' }} />
-                    <p>Novo Cadastro</p>
-                  </Link>
-                </button>
-              </div>
+            <h2 className="mb-7">Página inicial</h2>
+            <div className="flex text-[13px] md:text-[16px] gap-[10px]">
+              <button className="botao">
+                <Link href='/cadastro/paciente' className="flex flex-row gap-1 items-center">
+                  <PlusIcon style={{ color: 'var(--texto-botao)' }} />
+                  <p>Novo Cadastro</p>
+                </Link>
+              </button>
             </div>
+          </div>
           <div className="flex flex-col w-full">
             <div className="flex flex-col gap-2 mb-4">
               <h3>Minha unidade (Nome da Unidade)</h3>
@@ -131,10 +139,10 @@ export default function Home() {
               <input
                 type="text"
                 className='input w-full h-[35px] mb-2 pb-1'
-                placeholder="Buscar membro..." 
+                placeholder="Buscar membro..."
                 value={searchBy}
                 onChange={handleSearchBar}
-                />
+              />
 
               <button
                 type="button"
@@ -227,7 +235,7 @@ export default function Home() {
         <div className="mt-[28px] grid grid-cols-4 gap-2 w-full max-w-full">
           {filteringMembers.map((member) => (
             <button type="button" onClick={() => { urlToMemberPage(member) }} key={member.id} className="text-left">
-              <Card key={member.id} title={member.nome} cpf={member.cpf} acesso={member.type} />
+              <Card title={member.nome} cpf={member.cpf} acesso={member.type} />
             </button>
           ))}
         </div>

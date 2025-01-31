@@ -6,9 +6,17 @@ import NavBar from "@/components/NavBar";
 import NavBarPaciente from "@/components/NavBarPaciente";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
-export default function Home() {
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Home/>
+    </Suspense>
+  )
+}
+
+function Home() {
   const searchParams = useSearchParams();
   const email = searchParams.get("email");
   const [userEmail, setUserEmail] = useState("");

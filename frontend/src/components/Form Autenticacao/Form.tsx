@@ -198,7 +198,7 @@ const Form: React.FC<FormProps> = ({ id }) => {
 
           updateInfoSaude={(data) => updateDataAt(data, "saudeinfo")}
           updateLaudoFile={(data) => updateDataAt(data, "laudofile")}
-          handleFormDataSubmit={handleUserCreation}
+          handleFormDataSubmit={handleUserEdition}
         />;
       </>
     default:

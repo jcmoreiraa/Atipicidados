@@ -1,6 +1,6 @@
 import React from "react";
 
-function LogOut() {
+function LogOut(...props: any) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8,6 +8,7 @@ function LogOut() {
       height="14"
       fill="none"
       viewBox="0 0 14 14"
+      {...props}
     >
       <path
         stroke="#fff"
