@@ -1,8 +1,8 @@
-import  { Router } from 'express';
+import { Router } from 'express';
 import cors from 'cors';
 import { ChangePasswordForModel, createPaciente, getPaciente, getPacientes, getuserPacienteId, pacienteLogin, updateAnalise, updatePacienteAutonomia, updatePacienteComportamento, updatePacienteCompres, updatePacienteDesenvolvimento, updatePacienteEscola, updatePacienteFoto, updatePacienteGeral, updatePacienteGestacao, updatePacienteLaudo, updatePacienteMae, updatePacienteMaisinfo, updatePacienteNascimento, updatePacientePai, updatePacientePedagogico, updatePacienteRelescolar, updatePacienteRg, updatePacienteSaude } from '../controllers/pacienteControllers';
 import { PacienteCreateInputSchema } from '../../prisma/validateSchema';
-import { validate} from '../middleware/validate';
+import { validate } from '../middleware/validate';
 import { sendPassword } from '../email/sendPasswordByEmailPaciente';
 import { ensureAuthenticated } from '../middleware/ensureAuthenticate.ts/autheticate';
 import { sendMail } from '../email/confirmationEmail';
@@ -12,7 +12,7 @@ pacienteRouter.post('/', createPaciente);
 pacienteRouter.get('/cpf/:cpf', getPaciente);
 pacienteRouter.post('/login', pacienteLogin);
 pacienteRouter.get('/id/:id', getuserPacienteId);
-pacienteRouter.get('/getall',ensureAuthenticated, getPacientes);
+pacienteRouter.get('/getall/:id', ensureAuthenticated, getPacientes);
 pacienteRouter.post('senha', sendPassword);
 pacienteRouter.post('/id/:id/changePassword', ChangePasswordForModel)
 pacienteRouter.post('/formsDone', sendMail)

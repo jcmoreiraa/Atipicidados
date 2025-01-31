@@ -53,7 +53,7 @@ const Step1: React.FC<{
 
   const [Step11, setStep11] = useState<Step11State>({
     nome: "",
-    nascimento: "2024-12-04T00:00:00Z",
+    nascimento: "",
     cpf: "",
     rg: "",
     telefone: "",
@@ -91,6 +91,16 @@ const Step1: React.FC<{
   };
 
   const handleInputChange1 = (key: string, value: string) => {
+    if (key === "nascimento") {
+      setStep11((prevState) => {
+        const updatedForm = {
+          ...prevState,
+          [key]: value.concat("T00:00:00Z"),
+        };
+        updateForm(updatedForm);
+        return updatedForm;
+      });
+    }
     setStep11((prevState) => {
       const updatedForm = {
         ...prevState,

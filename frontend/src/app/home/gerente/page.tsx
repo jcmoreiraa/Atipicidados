@@ -107,7 +107,7 @@ function Home() {
 
   const fetchPacientes = async () => {
     try {
-      const response = await fetch("http://localhost:3002/pacientes/getall");
+      const response = await fetch(`http://localhost:3002/pacientes/getall/${id}`, { credentials: 'include' });
       if (!response.ok) {
         throw new Error("Failed to fetch pacientes data");
       }
