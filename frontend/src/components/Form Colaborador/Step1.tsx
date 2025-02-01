@@ -95,7 +95,7 @@ const Step1: React.FC<{
       setStep11((prevState) => {
         const updatedForm = {
           ...prevState,
-          [key]: value.concat("T00:00:00Z"),
+          [key]: value.concat("T00:00:00.000Z"),
         };
         updateForm(updatedForm);
         return updatedForm;
