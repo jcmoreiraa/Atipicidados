@@ -15,9 +15,9 @@ const Form: React.FC = () => {
     cpf: null,
     rg: null,
     raca: null,
-    unidadeId: null,
     nascimento: null,
-    genero: null
+    genero: null,
+    unidadeId: 0,
   });
 
   const updateForm = (data: any) => {

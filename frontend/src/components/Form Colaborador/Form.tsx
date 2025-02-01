@@ -20,7 +20,7 @@ const Form: React.FC = () => {
     formacao: null,
     genero: null,
     raca: null,
-    unidadeId: null,
+    unidadeId: "",
   });
 
   const updateForm = (data: any) => {
@@ -75,6 +75,9 @@ const Form: React.FC = () => {
     if (formData.formacao) {
       data.append('formacao', formData.formacao)
     }
+    if (formData.unidadeId) {
+      data.append('unidadeId', "")
+    }
 
     try {
       const response = await fetch("http://localhost:3002/colaboradores/", {
@@ -82,10 +85,20 @@ const Form: React.FC = () => {
         body: data,
       });
 
+      const responseText = await response.text();
+      console.log('Resposta do servidor:', responseText);
+
+      if (response.ok) {
+        const result = JSON.parse(responseText);
+        console.log('Resultado:', result);
+      } else {
+        console.log('Erro do servidor:', responseText);
+      }
+
       const result = await response.json();
       console.log(result);
 
-      router.push("/")
+      // router.push("/")
     } catch (error) {
       console.error("Erro ao criar gerente:", error);
     }

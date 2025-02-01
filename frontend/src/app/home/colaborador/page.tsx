@@ -2,6 +2,7 @@
 import PlusIcon from "@/assets/icons/plus";
 import SearchIcon from "@/assets/icons/search";
 import { Card } from "@/components/Card";
+import Loading from "@/components/Loading";
 import NavBarColaborador from "@/components/NavBarColaborador";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -9,8 +10,13 @@ import { Suspense, useEffect, useState } from "react";
 
 export default function Page() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Home/>
+    <Suspense fallback={<>
+      <div className="fixed z-40 place-self-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <Loading />
+      </div>
+      <div className="fixed inset-0 bg-black/30 z-30" />
+    </>}>
+      <Home />
     </Suspense>
   )
 }
@@ -37,15 +43,15 @@ function Home() {
     try {
       const responseColaborador = await fetch("http://localhost:3002/colaboradores/getall");
       const dataColaborador = await responseColaborador.json();
-      setColaboradores(dataColaborador.colaboradores);
+      setColaboradores(dataColaborador.colaboradores || []);
 
       const responsePaciente = await fetch(`http://localhost:3002/pacientes/getall/${id}`, { credentials: 'include' });
       const dataPaciente = await responsePaciente.json();
-      setPacientes(dataPaciente.pacientes);
+      setPacientes(dataPaciente.pacientes || []);
 
       const responseGerente = await fetch(`http://localhost:3002/gerentes/getall/${id}`, { credentials: 'include' });
       const dataGerente = await responseGerente.json();
-      setGerentes(dataGerente.gerentes);
+      setGerentes(dataGerente.gerentes || []);
     } catch (error) {
       console.error("Erro ao buscar dados:", error);
     }
@@ -80,7 +86,7 @@ function Home() {
 
   const filteringMembers = allMembers
     .filter((member) =>
-      member.nome.toLowerCase().includes(searchBy.toLowerCase())
+      member.nome && member.nome.toLowerCase().includes(searchBy.toLowerCase())
     )
     .filter((member) => {
       if (selectedFilters.length === 0) return true;
@@ -99,7 +105,7 @@ function Home() {
 
   const urlToMemberPage = (member: any) => {
     localStorage.removeItem("acs");
-    localStorage.setItem("acs", "g");
+    localStorage.setItem("acs", "c");
 
     if (member.type === "Paciente") {
       router.push(`/p/${member.id}`);
