@@ -63,7 +63,7 @@ export default function Home() {
 
   useEffect(() => {
     if (pacienteInfo?.fotofile) {
-      const fotoNome = pacienteInfo.fotofile.slice(8); 
+      const fotoNome = pacienteInfo.fotofile.slice(8);
       fetchFotoData(fotoNome);
     }
   }, [pacienteInfo]);
@@ -77,7 +77,7 @@ export default function Home() {
 
       const imageBlob = await response.blob();
       const imageUrl = URL.createObjectURL(imageBlob);
-      setImageData(imageUrl); 
+      setImageData(imageUrl);
     } catch (error) {
       console.error('Erro ao buscar imagem:', error);
     }
@@ -170,7 +170,7 @@ export default function Home() {
             <h3>Mãe</h3>
             <p className="titulo">{pacienteInfo && pacienteInfo.mae ? pacienteInfo.mae.nome : "Nome da mãe"}</p>
 
-            <div className="flex flex-row gap-[18px] items-center">
+            <div className="flex flex-row gap-[18px] items-start">
               <div className="flex flex-col gap-5">
                 <div>
                   <p className="titulo">RG:</p>
@@ -190,8 +190,8 @@ export default function Home() {
                 </div>
 
                 <div>
-                  <p className="titulo">Endereço:</p>
-                  <p>{pacienteInfo && pacienteInfo.mae ? pacienteInfo.mae.endereco : "Endereço da mãe"}</p>
+                  <p className="titulo">Contato:</p>
+                  <p>{pacienteInfo && pacienteInfo.mae ? pacienteInfo.mae.telefone : "Telefone da mãe"}</p>
                 </div>
               </div>
 
@@ -199,11 +199,6 @@ export default function Home() {
                 <div>
                   <p className="titulo">Escolaridade:</p>
                   <p>{pacienteInfo && pacienteInfo.mae ? pacienteInfo.mae.escolaridade : "Escolaridade da mãe"}</p>
-                </div>
-
-                <div>
-                  <p className="titulo">Contato:</p>
-                  <p>{pacienteInfo && pacienteInfo.mae ? pacienteInfo.mae.telefone : "Telefone da mãe"}</p>
                 </div>
               </div>
             </div>
@@ -213,7 +208,7 @@ export default function Home() {
             <h3>Pai</h3>
             <p className="titulo">{pacienteInfo && pacienteInfo.pai ? pacienteInfo.pai.nome : "Nome do pai"}</p>
 
-            <div className="flex flex-row gap-[18px] items-center">
+            <div className="flex flex-row gap-[18px] items-start">
               <div className="flex flex-col gap-5">
                 <div>
                   <p className="titulo">RG:</p>
@@ -233,12 +228,12 @@ export default function Home() {
                 </div>
 
                 <div>
-                  <p className="titulo">Endereço:</p>
-                  <p>{pacienteInfo && pacienteInfo.pai ? pacienteInfo.pai.endereco : "Endereço do pai"}</p>
+                  <p className="titulo">Contato:</p>
+                  <p>{pacienteInfo && pacienteInfo.pai ? pacienteInfo.pai.telefone : "Telefone do pai"}</p>
                 </div>
               </div>
 
-              <div className="flex flex-col gap-5">
+              <div className="flex flex-col gap-5 justify-start">
                 <div>
                   <p className="titulo">Escolaridade:</p>
                   <p>{pacienteInfo && pacienteInfo.pai ? pacienteInfo.pai.escolaridade : "Escolaridade do pai"}</p>

@@ -2,6 +2,7 @@
 import PlusIcon from "@/assets/icons/plus";
 import SearchIcon from "@/assets/icons/search";
 import { Card } from "@/components/Card";
+import Loading from "@/components/Loading";
 import NavBarGerente from "@/components/NavBarGerente";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -9,8 +10,13 @@ import { Suspense, useEffect, useState } from "react";
 
 export default function Page() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Home/>
+    <Suspense fallback={<>
+      <div className="fixed z-40 place-self-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <Loading />
+      </div>
+      <div className="fixed inset-0 bg-black/30 z-30" />
+    </>}>
+      <Home />
     </Suspense>
   )
 }
@@ -107,7 +113,7 @@ function Home() {
 
   const fetchPacientes = async () => {
     try {
-      const response = await fetch("http://localhost:3002/pacientes/getall");
+      const response = await fetch(`http://localhost:3002/pacientes/getall/${id}`, { credentials: 'include' });
       if (!response.ok) {
         throw new Error("Failed to fetch pacientes data");
       }

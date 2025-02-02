@@ -3,21 +3,35 @@ import React, { useEffect, useState } from 'react';
 import Step1 from './Step1';
 import { useRouter } from 'next/navigation';
 
+interface FormData {
+  email: string | null,
+  password: string | null,
+  fotofile: string | null,
+  nome: string | null,
+  telefone: string | null,
+  cpf: string | null,
+  rg: string | null,
+  raca: string | null,
+  nascimento: string | null,
+  genero: string | null,
+  unidadeId: string | 0,
+}
+
 const Form: React.FC = () => {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     email: null,
     password: null,
     fotofile: null,
-    nome: null ,
+    nome: null,
     telefone: null,
     cpf: null,
     rg: null,
     raca: null,
-    unidadeId: null,
     nascimento: null,
-    genero: null
+    genero: null,
+    unidadeId: 0,
   });
 
   const updateForm = (data: any) => {
@@ -53,7 +67,7 @@ const Form: React.FC = () => {
       data.append('fotofile', formData.fotofile)
     }
     if (formData.nascimento) {
-      data.append('nascimento', formData.nascimento)
+      data.append('nascimento', formData.nascimento.concat("T00:00:00.000Z"))
     }
     if (formData.password) {
       data.append('password', formData.password)

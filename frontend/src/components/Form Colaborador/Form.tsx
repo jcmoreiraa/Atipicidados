@@ -3,10 +3,26 @@ import React, { useEffect, useState } from 'react';
 import Step1 from './Step1';
 import { useRouter } from 'next/navigation';
 
+interface FormData {
+  email: string | null;
+  password: string | null;
+  fotofile: File | null;
+  nome: string | null;
+  cpf: string | null;
+  rg: string | null;
+  nascimento: string | null;
+  telefone: string | null;
+  titulo: string | null;
+  formacao: string | null;
+  genero: string | null;
+  raca: string | null;
+  unidadeId: string;
+}
+
 const Form: React.FC = () => {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     email: null,
     password: null,
 
@@ -20,7 +36,7 @@ const Form: React.FC = () => {
     formacao: null,
     genero: null,
     raca: null,
-    unidadeId: null,
+    unidadeId: "",
   });
 
   const updateForm = (data: any) => {
@@ -75,17 +91,43 @@ const Form: React.FC = () => {
     if (formData.formacao) {
       data.append('formacao', formData.formacao)
     }
+    if (formData.unidadeId) {
+      data.append('unidadeId', "")
+    }
+
+    const dataJSON = formData.nascimento ? {
+      email: formData.email,
+      password: formData.password,
+      nome: formData.nome,
+      cpf: formData.cpf,
+      rg: formData.rg,
+      nascimento: formData.nascimento.concat("T00:00:00.000Z"),
+      telefone: formData.telefone,
+      titulo: formData.titulo,
+      formacao: formData.formacao,
+      genero: formData.genero,
+      raca: formData.raca,
+      unidadeId: "",
+    } : "";
 
     try {
       const response = await fetch("http://localhost:3002/colaboradores/", {
         method: "POST",
-        body: data,
+        body: JSON.stringify(dataJSON),
+        headers: { 'Content-Type': 'application/json' },
       });
 
-      const result = await response.json();
-      console.log(result);
+      const responseText = await response.text();
+      console.log('Resposta do servidor:', responseText);
 
-      router.push("/")
+      if (response.ok) {
+        const result = JSON.parse(responseText);
+        console.log('Resultado:', result);
+      } else {
+        console.log('Erro do servidor:', responseText);
+      }
+
+      // router.push("/")
     } catch (error) {
       console.error("Erro ao criar gerente:", error);
     }

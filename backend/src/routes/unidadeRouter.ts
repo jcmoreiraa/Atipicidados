@@ -6,4 +6,4 @@ export const unidadeRouter = Router();
 unidadeRouter.post('/', createUserUnidade);
 unidadeRouter.put('/connectgerente', addGerenteToUnidade);
 unidadeRouter.get('/getUnidadeById/:id', getUnidadeById);
-unidadeRouter.get('/all', getUnidades);
+unidadeRouter.get('/getall', getUnidades);

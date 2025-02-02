@@ -25,7 +25,7 @@ type Step11State = {
   unidadeId: number;
   raca: string;
   nascimento: string;
-  genero:string
+  genero: string
 };
 
 const Step1: React.FC<{
@@ -48,14 +48,14 @@ const Step1: React.FC<{
     rg: "",
     unidadeId: 0,
     raca: "",
-    nascimento:"2024-12-04T00:00:00Z",
-    genero:'masculino'
-    
+    nascimento: "",
+    genero: "",
+
   });
 
   const errorRef = useRef<HTMLDivElement>(null);
   const [error, setError] = useState<string | null>(null);
-  console.log(typeof(Step11.unidadeId))
+  console.log(typeof (Step11.unidadeId))
   const [isCpfMissing, setIsCpfMissing] = useState(false);
   const [isEmailMissing, setIsEmailMissing] = useState(false);
   const [isSenhaMissing, setIsSenhaMissing] = useState(false);
@@ -72,16 +72,26 @@ const Step1: React.FC<{
   };
 
   const handleInputChange1 = (key: string, value: string) => {
+    if (key === "nascimento") {
+      setStep11((prevState) => {
+        const updatedForm = {
+          ...prevState,
+          [key]: value.concat("T00:00:00.000Z"),
+        };
+        updateForm(updatedForm);
+        return updatedForm;
+      });
+    }
     setStep11((prevState) => {
       const updatedForm = {
         ...prevState,
-        [key]: key === 'unidadeId' ? parseInt(value, 10) : value,
+        [key]: value,
       };
       updateForm(updatedForm);
       return updatedForm;
     });
   };
-  
+
 
   useEffect(() => {
     if (error && errorRef.current) {
@@ -96,10 +106,10 @@ const Step1: React.FC<{
   const handleFotoFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setFotoFile(e.target.files[0]);
-      updateForm({ fotofile: e.target.files[0]}); 
+      updateForm({ fotofile: e.target.files[0] });
     }
   };
-  
+
 
   const handleTermoClick = () => {
     setIsModalVisible(true);
@@ -145,7 +155,7 @@ const Step1: React.FC<{
     }
 
     handleFormDataSubmit();
-    
+
   };
 
   return (
@@ -193,14 +203,15 @@ const Step1: React.FC<{
                     default:
                       formattedValue = value;
                   }
-                  handleInputChange1("sexo", formattedValue)
+                  handleInputChange1("genero", formattedValue)
                 }} />
             </div>
 
 
             <div className='flex flex-col md:flex-row w-full gap-[12px]'>
-              <TextInput type="cpf" placeholder='CPF' className='md:w-1/2' value={Step11.cpf} onChange={(e) => handleInputChange1("cpf", e.target.value)} />
-              <TextInput type="rg" placeholder='RG' className='md:w-1/2' value={Step11.rg} onChange={(e) => handleInputChange1("rg", e.target.value)} />
+              <TextInput type="cpf" placeholder='CPF' className='md:w-1/3' value={Step11.cpf} onChange={(e) => handleInputChange1("cpf", e.target.value)} />
+              <TextInput type="rg" placeholder='RG' className='md:w-1/3' value={Step11.rg} onChange={(e) => handleInputChange1("rg", e.target.value)} />
+              <DateInput value={Step11.nascimento} className='md:w-1/3' onChange={(e) => handleInputChange1("nascimento", e.target.value)} />
             </div>
             <div className='flex flex-col md:flex-row w-full gap-[12px]'>
               <SelectInput

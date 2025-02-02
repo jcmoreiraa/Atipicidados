@@ -113,7 +113,7 @@ const Form: React.FC = () => {
       })
       const result = await response.json();
       console.log(result);
-
+      router.push("/");
     } catch (error) {
       console.error("Erro ao criar usuário:", error);
     } finally {
@@ -121,7 +121,7 @@ const Form: React.FC = () => {
     }
   }
 
-  const[isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   switch (currentStep) {
     case 1:
