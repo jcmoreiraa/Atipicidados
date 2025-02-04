@@ -2,12 +2,29 @@
 import { CardUnidade } from "@/components/Card";
 import NavBarGerente from "@/components/NavBarGerente";
 // import Link from "next/link";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import SearchIcon from "@/assets/icons/search";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import Loading from "@/components/Loading";
 
-export default function Home() {
+export default function Page() {
+  return (
+    <Suspense fallback={<>
+      <div className="fixed z-40 place-self-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <Loading />
+      </div>
+      <div className="fixed inset-0 bg-black/30 z-30" />
+    </>}>
+      <Home />
+    </Suspense>
+  )
+}
+
+function Home() {
   const router = useRouter();
+
+  const searchParams = useSearchParams();
+  const gerenteId = searchParams.get("id");
 
   const [userEmail, setUserEmail] = useState("");
   const [userID, setUserID] = useState("");
@@ -57,13 +74,10 @@ export default function Home() {
 
   const urlToUnidadePage = (unidade: any) => {
     //p de paciente g de gerente e c de colaborador, dps recebe o id, e qual eh o acesso ("acs") da pessoa que esta 
-    localStorage.removeItem("unidadeId");
     localStorage.removeItem("acs");
-
-    localStorage.setItem("unidadeId", unidade.id);
     localStorage.setItem("acs", "g");
 
-    router.push("/unidades/nomedaunidade");
+    router.push(`/unidades/${unidade.id}?id=${gerenteId}`);
   }
 
   return (

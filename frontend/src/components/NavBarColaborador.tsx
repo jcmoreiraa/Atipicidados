@@ -18,7 +18,7 @@ interface NavBarProps {
     userName?: string | null;
 }
 
-export default function NavBar({ userEmail, userName }: NavBarProps) {
+export default function NavBar({ userEmail, userName, ...props }: NavBarProps) {
     const currentPath = usePathname().split('?')[0];
     const [userrEmail, setUserrEmail] = useState("");
     const [userID, setUserID] = useState("");
@@ -98,7 +98,7 @@ export default function NavBar({ userEmail, userName }: NavBarProps) {
                     <Link href={homeLink} className={`px-3 py-2.5 ${currentPath.startsWith('/home') ? 'text-blue-800 font-bold bg-blue-800/15 rounded-lg' : 'text-gray-700'}`}>
                         Página inicial
                     </Link>
-                    <Link href="/unidadescolaborador" className={`px-3 py-2.5 ${currentPath === '/unidadescolaborador' ? 'text-blue-800 font-bold bg-blue-800/15 rounded-lg' : 'text-gray-700'}`}>
+                    <Link href={`/unidadescolaborador?id=${props.id}`} className={`px-3 py-2.5 ${currentPath === '/unidadescolaborador' ? 'text-blue-800 font-bold bg-blue-800/15 rounded-lg' : 'text-gray-700'}`}>
                         Unidades
                     </Link>
                 </nav>
