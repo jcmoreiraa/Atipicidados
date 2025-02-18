@@ -5,5 +5,7 @@ RUN npm install
 COPY prisma ./prisma
 RUN npx prisma generate
 COPY . .
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 EXPOSE 3002
-CMD ["npx", "ts-node", "src/server.ts"]
+CMD ["/entrypoint.sh"]
