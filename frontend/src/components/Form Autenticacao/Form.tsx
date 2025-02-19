@@ -54,7 +54,7 @@ const Form: React.FC<FormProps> = ({ id }) => {
 
   const fetchData = async (id: any) => {
     try {
-      const response = await fetch(`http://localhost:3002/pacientes/id/${id}`);
+      const response = await fetch(`https://atipicidados-1.onrender.com/pacientes/id/${id}`);
       if (!response.ok) {
         throw new Error("Failed to fetch paciente data");
       }
@@ -90,7 +90,7 @@ const Form: React.FC<FormProps> = ({ id }) => {
         body[type] = JSON.stringify(data);
       }
 
-      const response = await fetch(`http://localhost:3002/pacientes/put${type}`, {
+      const response = await fetch(`https://atipicidados-1.onrender.com/pacientes/put${type}`, {
         method: "PUT",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),

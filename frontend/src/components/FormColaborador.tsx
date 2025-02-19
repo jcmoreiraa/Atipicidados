@@ -103,7 +103,7 @@ export default function FormColaborador() {
   // Handlers
   const handleUserCreation = async () => {
     try {
-      const response = await fetch("http://localhost:3002/colaboradores/", {
+      const response = await fetch("https://atipicidados-1.onrender.com/colaboradores/", {
         method: "POST",
         body: JSON.stringify(formData),
         headers: { "Content-Type": "application/json" },

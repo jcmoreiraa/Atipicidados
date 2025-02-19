@@ -25,13 +25,13 @@ export function Card({ id, title, cpf, acesso, hasBorder = true }: CardProps) {
     let url = ""
     switch (acesso) {
       case ("Gerente"):
-        url = `http://localhost:3002/gerentes/id/${id}`;
+        url = `https://atipicidados-1.onrender.com/gerentes/id/${id}`;
         break;
       case ("Colaborador"):
-        url = `http://localhost:3002/colaboradores/id/${id}`;
+        url = `https://atipicidados-1.onrender.com/colaboradores/id/${id}`;
         break;
       case ("Paciente"):
-        url = `http://localhost:3002/pacientes/id/${id}`;
+        url = `https://atipicidados-1.onrender.com/pacientes/id/${id}`;
         break;
       default:
         console.error("Unknown user type");
@@ -63,7 +63,7 @@ export function Card({ id, title, cpf, acesso, hasBorder = true }: CardProps) {
 
   const fetchFotoData = async (fotoNome: string) => {
     try {
-      const response = await fetch(`http://localhost:3002/imagens/${fotoNome}`);
+      const response = await fetch(`https://atipicidados-1.onrender.com/imagens/${fotoNome}`);
       if (!response.ok) {
         throw new Error('Fetch falhou');
       }

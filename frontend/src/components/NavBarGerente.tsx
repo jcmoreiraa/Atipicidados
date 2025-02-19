@@ -48,7 +48,7 @@ export default function NavBar({ userEmail, userName, ...props }: NavBarProps) {
 
   const fetchGerenteData = async (id: any) => {
     try {
-      const response = await fetch(`http://localhost:3002/gerentes/id/${id}`);
+      const response = await fetch(`https://atipicidados-1.onrender.com/gerentes/id/${id}`);
       if (!response.ok) {
         throw new Error("Failed to fetch gerente data");
       }
@@ -68,7 +68,7 @@ export default function NavBar({ userEmail, userName, ...props }: NavBarProps) {
 
   const fetchFotoData = async (fotoNome: string) => {
     try {
-      const response = await fetch(`http://localhost:3002/imagens/${fotoNome}`);
+      const response = await fetch(`https://atipicidados-1.onrender.com/imagens/${fotoNome}`);
       if (!response.ok) {
         throw new Error('Fetch falhou');
       }
