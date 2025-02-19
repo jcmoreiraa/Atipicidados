@@ -46,7 +46,7 @@ export default function Home() {
 
     const fetchPacienteData = async (id: any) => {
         try {
-            const response = await fetch(`http://localhost:3002/gerentes/id/${id}`);
+            const response = await fetch(`https://atipicidados-1.onrender.com/gerentes/id/${id}`);
             if (!response.ok) {
                 throw new Error("Failed to fetch gerente data");
             }
@@ -59,7 +59,7 @@ export default function Home() {
 
     const fetchUnidadeData = async () => {
         try {
-            const response = await fetch(`http://localhost:3002/unidades/getUnidadeById/${pacienteInfo.unidadeId}`);
+            const response = await fetch(`https://atipicidados-1.onrender.com/unidades/getUnidadeById/${pacienteInfo.unidadeId}`);
             if (!response.ok) {
                 throw new Error("Failed to fetch unidades data");
             }

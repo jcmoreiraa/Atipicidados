@@ -41,15 +41,15 @@ function Home() {
 
   const fetchData = async () => {
     try {
-      const responseColaborador = await fetch("http://localhost:3002/colaboradores/getall");
+      const responseColaborador = await fetch("https://atipicidados-1.onrender.com/colaboradores/getall");
       const dataColaborador = await responseColaborador.json();
       setColaboradores(dataColaborador.colaboradores || []);
 
-      const responsePaciente = await fetch(`http://localhost:3002/pacientes/getall/${id}`, { credentials: 'include' });
+      const responsePaciente = await fetch(`https://atipicidados-1.onrender.com/pacientes/getall/${id}`, { credentials: 'include' });
       const dataPaciente = await responsePaciente.json();
       setPacientes(dataPaciente.pacientes || []);
 
-      const responseGerente = await fetch(`http://localhost:3002/gerentes/getall/${id}`, { credentials: 'include' });
+      const responseGerente = await fetch(`https://atipicidados-1.onrender.com/gerentes/getall/${id}`, { credentials: 'include' });
       const dataGerente = await responseGerente.json();
       setGerentes(dataGerente.gerentes || []);
     } catch (error) {
@@ -70,7 +70,7 @@ function Home() {
 
   const fetchColaboradorData = async (id: string) => {
     try {
-      const response = await fetch(`http://localhost:3002/colaboradores/id/${id}`);
+      const response = await fetch(`https://atipicidados-1.onrender.com/colaboradores/id/${id}`);
       const data = await response.json();
       setColaboradorInfo(data);
     } catch (error) {

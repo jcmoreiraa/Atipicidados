@@ -26,7 +26,7 @@ export default function Home() {
 
   const fetchPacienteData = async (id: string) => {
     try {
-      const response = await fetch(`http://localhost:3002/pacientes/id/${id}`);
+      const response = await fetch(`https://atipicidados-1.onrender.com/pacientes/id/${id}`);
       if (!response.ok) {
         throw new Error("Failed to fetch paciente data");
       }
@@ -46,7 +46,7 @@ export default function Home() {
 
   const fetchFotoData = async (fotoNome: string) => {
     try {
-      const response = await fetch(`http://localhost:3002/imagens/${fotoNome}`);
+      const response = await fetch(`https://atipicidados-1.onrender.com/imagens/${fotoNome}`);
       if (!response.ok) {
         throw new Error('Fetch falhou');
       }
@@ -101,7 +101,7 @@ export default function Home() {
                 <div className="flex flex-col gap-6">
                   <div>
                     <p className="titulo">Data de nascimento:</p>
-                    <p>{pacienteInfo?.nascimentodata || fallback}</p>
+                    <p>{pacienteInfo?.geral?.data || fallback}</p>
                   </div>
 
                   <div>
@@ -150,10 +150,6 @@ export default function Home() {
                   <p>{pacienteInfo?.mae?.cpf || fallback}</p>
                 </div>
                 <div>
-                  <p className="titulo">Endereço:</p>
-                  <p>{pacienteInfo?.mae?.endereco || fallback}</p>
-                </div>
-                <div>
                   <p className="titulo">Contato:</p>
                   <p>{pacienteInfo?.mae?.telefone || fallback}</p>
                 </div>
@@ -176,11 +172,6 @@ export default function Home() {
                 <div>
                   <p className="titulo">Data de nascimento:</p>
                   <p>{pacienteInfo?.mae?.data || fallback}</p>
-                </div>
-
-                <div>
-                  <p className="titulo">Endereço:</p>
-                  <p>{pacienteInfo?.mae?.endereco || fallback}</p>
                 </div>
               </div>
 
@@ -223,10 +214,6 @@ export default function Home() {
                   <p>{pacienteInfo?.pai?.cpf || fallback}</p>
                 </div>
                 <div>
-                  <p className="titulo">Endereço:</p>
-                  <p>{pacienteInfo?.pai?.endereco || fallback}</p>
-                </div>
-                <div>
                   <p className="titulo">Contato:</p>
                   <p>{pacienteInfo?.pai?.telefone || fallback}</p>
                 </div>
@@ -249,11 +236,6 @@ export default function Home() {
                 <div>
                   <p className="titulo">Data de nascimento:</p>
                   <p>{pacienteInfo?.pai?.data || fallback}</p>
-                </div>
-
-                <div>
-                  <p className="titulo">Endereço:</p>
-                  <p>{pacienteInfo?.pai?.endereco || fallback}</p>
                 </div>
               </div>
 

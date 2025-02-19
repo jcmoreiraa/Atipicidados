@@ -111,7 +111,7 @@ const Form: React.FC = () => {
     } : "";
 
     try {
-      const response = await fetch("http://localhost:3002/colaboradores/", {
+      const response = await fetch("https://atipicidados-1.onrender.com/colaboradores/", {
         method: "POST",
         body: JSON.stringify(dataJSON),
         headers: { 'Content-Type': 'application/json' },
