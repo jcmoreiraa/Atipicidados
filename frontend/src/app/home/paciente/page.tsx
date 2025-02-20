@@ -103,7 +103,6 @@ export default function Home() {
                     <p className="titulo">Data de nascimento:</p>
                     <p>{pacienteInfo?.geral?.data || fallback}</p>
                   </div>
-
                   <div>
                     <p className="titulo">Endereço:</p>
                     <p>{pacienteInfo?.geral?.endereco || fallback}</p>
@@ -173,14 +172,13 @@ export default function Home() {
                   <p className="titulo">Data de nascimento:</p>
                   <p>{pacienteInfo?.mae?.data || fallback}</p>
                 </div>
-              </div>
-
-              <div className="flex flex-col gap-5">
                 <div>
                   <p className="titulo">Escolaridade:</p>
                   <p>{pacienteInfo?.mae?.escolaridade || fallback}</p>
                 </div>
+              </div>
 
+              <div className="flex flex-col gap-5 items-start h-full">
                 <div>
                   <p className="titulo">Contato:</p>
                   <p>{pacienteInfo?.mae?.telefone || fallback}</p>
@@ -237,14 +235,13 @@ export default function Home() {
                   <p className="titulo">Data de nascimento:</p>
                   <p>{pacienteInfo?.pai?.data || fallback}</p>
                 </div>
-              </div>
-
-              <div className="flex flex-col gap-5">
                 <div>
                   <p className="titulo">Escolaridade:</p>
                   <p>{pacienteInfo?.pai?.escolaridade || fallback}</p>
                 </div>
+              </div>
 
+              <div className="flex flex-col gap-5 items-start h-full">
                 <div>
                   <p className="titulo">Contato:</p>
                   <p>{pacienteInfo?.pai?.telefone || fallback}</p>
@@ -254,7 +251,7 @@ export default function Home() {
           </div>
         </div>
         {pacienteInfo?.analise ? (
-          <div className="bg-[#e1b831]/100 w-[470px] text-black py-3 px-4 rounded-xl self-end"> <span className="font-bold">!! Autenticação pendente:</span> Marque uma consulta na sua unidade mais próxima para autenticar seu cadastro.</div>
+          <div className="bg-[#e1b831]/100 w-[470px] text-black py-3 px-4 rounded-xl self-end mb-5"> <span className="font-bold">!! Autenticação pendente:</span> Marque uma consulta na sua unidade mais próxima para autenticar seu cadastro.</div>
         ) : ""}
       </div>
     </main>
