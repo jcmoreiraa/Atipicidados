@@ -77,7 +77,7 @@ const Step3: React.FC<{
 
   const handleTest = async () => {
     try {
-      const teste = await fetch("https://atipicidados-1.onrender.com/pacientes/", {
+      const teste = await fetch("https://atipicidados.onrender.com/pacientes/", {
         method: "POST",
         body: JSON.stringify(Step3),
         headers: { 'Content-Type': 'application/json' }

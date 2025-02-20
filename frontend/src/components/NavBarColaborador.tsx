@@ -42,7 +42,7 @@ export default function NavBar({ userEmail, userName, ...props }: NavBarProps) {
 
     const fetchColaboradorData = async (id: any) => {
         try {
-            const response = await fetch(`https://atipicidados-1.onrender.com/colaboradores/id/${id}`);
+            const response = await fetch(`https://atipicidados.onrender.com/colaboradores/id/${id}`);
             if (!response.ok) {
                 throw new Error("Failed to fetch colaborador data");
             }
@@ -62,7 +62,7 @@ export default function NavBar({ userEmail, userName, ...props }: NavBarProps) {
 
     const fetchFotoData = async (fotoNome: string) => {
         try {
-            const response = await fetch(`https://atipicidados-1.onrender.com/imagens/${fotoNome}`);
+            const response = await fetch(`https://atipicidados.onrender.com/imagens/${fotoNome}`);
             if (!response.ok) {
                 throw new Error('Fetch falhou');
             }

@@ -41,7 +41,7 @@ function Home() {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await fetch(`https://atipicidados-1.onrender.com/gerentes/token/${id}`, {
+        const response = await fetch(`https://atipicidados.onrender.com/gerentes/token/${id}`, {
           method: "POST",
           credentials: "include",
         });
@@ -100,7 +100,7 @@ function Home() {
 
   const fetchGerenteData = async (id: any) => {
     try {
-      const response = await fetch(`https://atipicidados-1.onrender.com/gerentes/id/${id}`);
+      const response = await fetch(`https://atipicidados.onrender.com/gerentes/id/${id}`);
       if (!response.ok) {
         throw new Error("Failed to fetch gerente data");
       }
@@ -113,7 +113,7 @@ function Home() {
 
   const fetchPacientes = async () => {
     try {
-      const response = await fetch(`https://atipicidados-1.onrender.com/pacientes/getall/${id}`, { credentials: 'include' });
+      const response = await fetch(`https://atipicidados.onrender.com/pacientes/getall/${id}`, { credentials: 'include' });
       if (!response.ok) {
         throw new Error("Failed to fetch pacientes data");
       }
@@ -126,7 +126,7 @@ function Home() {
   };
   const fetchGerentes = async () => {
     try {
-      const response = await fetch(`https://atipicidados-1.onrender.com/gerentes/getall/${id}`, { credentials: 'include' });
+      const response = await fetch(`https://atipicidados.onrender.com/gerentes/getall/${id}`, { credentials: 'include' });
       if (!response.ok) {
         throw new Error("Failed to fetch gerentes data");
       }
@@ -138,7 +138,7 @@ function Home() {
   };
   const fetchColaboradores = async () => {
     try {
-      const response = await fetch("https://atipicidados-1.onrender.com/colaboradores/getall");
+      const response = await fetch("https://atipicidados.onrender.com/colaboradores/getall");
       if (!response.ok) {
         throw new Error("Failed to fetch colaboradores data");
       }

@@ -27,13 +27,13 @@ export default function Home() {
     let url = ""
     switch (userType) {
       case ("Gerente"):
-        url = "https://atipicidados-1.onrender.com/gerentes/senha"
+        url = "https://atipicidados.onrender.com/gerentes/senha"
         break;
       case ("Colaborador"):
-        url = "https://atipicidados-1.onrender.com/colaboradores/senha"
+        url = "https://atipicidados.onrender.com/colaboradores/senha"
         break;
       case ("Paciente"):
-        url = "https://atipicidados-1.onrender.com/pacientes/senha"
+        url = "https://atipicidados.onrender.com/pacientes/senha"
         break;
       default:
         console.error("Unknown user type");

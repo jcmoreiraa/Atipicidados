@@ -15,7 +15,7 @@ export default function Home() {
       const colaborador = colaboradorData?.toLowerCase();
       console.log(colaboradorData);
 
-      const response = await fetch(`https://atipicidados-1.onrender.com/${colaborador + 'es'}/id/${id}/changePassword`, {
+      const response = await fetch(`https://atipicidados.onrender.com/${colaborador + 'es'}/id/${id}/changePassword`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

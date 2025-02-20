@@ -45,11 +45,11 @@ function Home() {
 
   const fetchData = async () => {
     try {
-      const responseColaborador = await fetch("https://atipicidados-1.onrender.com/colaboradores/getall");
+      const responseColaborador = await fetch("https://atipicidados.onrender.com/colaboradores/getall");
       const dataColaborador = await responseColaborador.json();
       setColaboradores(dataColaborador.colaboradores || []);
 
-      const responseGerente = await fetch(`https://atipicidados-1.onrender.com/gerentes/getall/${gerenteId}`, { credentials: 'include' });
+      const responseGerente = await fetch(`https://atipicidados.onrender.com/gerentes/getall/${gerenteId}`, { credentials: 'include' });
       const dataGerente = await responseGerente.json();
       setGerentes(dataGerente.gerentes || []);
     } catch (error) {
@@ -72,7 +72,7 @@ function Home() {
 
   const fetchUnidadeData = async (id: any) => {
     try {
-      const response = await fetch(`https://atipicidados-1.onrender.com/unidades/getUnidadeById/${id}`);
+      const response = await fetch(`https://atipicidados.onrender.com/unidades/getUnidadeById/${id}`);
       if (!response.ok) {
         throw new Error("Failed to fetch unidades data");
       }

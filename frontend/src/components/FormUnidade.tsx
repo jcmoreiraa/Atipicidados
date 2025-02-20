@@ -26,7 +26,7 @@ export default function FormGerente() {
   // Handlers
   const handleUnityCreation = async () => {
     try {
-      const response = await fetch("https://atipicidados-1.onrender.com/unidades/", {
+      const response = await fetch("https://atipicidados.onrender.com/unidades/", {
         method: "POST",
         body: JSON.stringify(formData),
         headers: { "Content-Type": "application/json" },

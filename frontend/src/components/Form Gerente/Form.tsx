@@ -82,7 +82,7 @@ const Form: React.FC = () => {
       data.append('genero', formData.genero)
     }
     try {
-      const response = await fetch("https://atipicidados-1.onrender.com/gerentes/", {
+      const response = await fetch("https://atipicidados.onrender.com/gerentes/", {
         method: "POST",
         body: data,
       });

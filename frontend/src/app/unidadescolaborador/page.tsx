@@ -47,7 +47,7 @@ function Home() {
 
   const fetchColaboradorData = async (id: any) => {
     try {
-      const response = await fetch(`https://atipicidados-1.onrender.com/colaboradores/id/${id}`);
+      const response = await fetch(`https://atipicidados.onrender.com/colaboradores/id/${id}`);
       if (!response.ok) {
         throw new Error("Failed to fetch gerente data");
       }
@@ -60,7 +60,7 @@ function Home() {
 
   const fetchUnidades = async () => {
     try {
-      const response = await fetch("https://atipicidados-1.onrender.com/unidades/getall");
+      const response = await fetch("https://atipicidados.onrender.com/unidades/getall");
       if (!response.ok) {
         throw new Error("Failed to fetch unidades data");
       }

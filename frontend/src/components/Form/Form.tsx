@@ -68,7 +68,7 @@ const Form: React.FC = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch("https://atipicidados-1.onrender.com/pacientes/login", {
+      const response = await fetch("https://atipicidados.onrender.com/pacientes/login", {
         method: "POST",
         body: JSON.stringify({ email: formData.email, password: formData.password }),
         headers: { 'Content-Type': 'application/json' }
@@ -138,7 +138,7 @@ const Form: React.FC = () => {
 
     try {
 
-      const response = await fetch("https://atipicidados-1.onrender.com/pacientes/", {
+      const response = await fetch("https://atipicidados.onrender.com/pacientes/", {
         method: "POST",
         body: data, // mudar caso queira colocar o blob para body: formDataToSend, 
       })
