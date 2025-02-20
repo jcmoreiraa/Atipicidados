@@ -41,7 +41,7 @@ const Form: React.FC = () => {
   switch (currentStep) {
     case 1:
       return <>
-        <button onClick={() => { console.log(formData) }}>Mostrar formData</button>
+        {/* <button onClick={() => { console.log(formData) }}>Mostrar formData</button> */}
         <Step1
           handleFormDataSubmit={handleUserCreation}
           updateForm={(data) => updateForm(data)}

@@ -154,7 +154,7 @@ const Form: React.FC<FormProps> = ({ id }) => {
   switch (currentStep) {
     case 1:
       return <>
-        <button onClick={() => { console.log(formData) }}>Mostrar formData</button>
+        {/* <button onClick={() => { console.log(formData) }}>Mostrar formData</button> */}
         <Step1
           nextStep={nextStep}
 
@@ -190,7 +190,7 @@ const Form: React.FC<FormProps> = ({ id }) => {
       />;
     case 4:
       return <>
-        <button onClick={() => { console.log(formData) }}>Mostrar formData</button>
+        {/* <button onClick={() => { console.log(formData) }}>Mostrar formData</button> */}
         <Step4
           prevStep={prevStep}
 

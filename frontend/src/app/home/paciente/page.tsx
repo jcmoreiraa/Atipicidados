@@ -154,7 +154,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="hidden lg:flex flex-row gap-[18px] items-center">
+            <div className="hidden lg:flex flex-row gap-[18px] items-start">
               <div className="flex flex-col gap-5">
                 <div>
                   <p className="titulo">RG:</p>
@@ -217,7 +217,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="hidden md:flex flex-row gap-[18px] items-center">
+            <div className="hidden md:flex flex-row gap-[18px] items-start">
               <div className="flex flex-col gap-5">
                 <div>
                   <p className="titulo">RG:</p>

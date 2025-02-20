@@ -175,7 +175,7 @@ export default function FormGerente() {
         </div>
 
         <div className='flex flex-col gap-[12px]'>
-					<button onClick={() => { console.log(fotoFile) }}>Mostrar Foto</button>
+					{/* <button onClick={() => { console.log(fotoFile) }}>Mostrar Foto</button> */}
 					
 					<div className='flex w-full gap-[12px]'>
 						<FileInput placeholder="Foto 3x4" className="min-w-[260px]" onChange={handleFotoFileChange} name="fotoFile"/>
@@ -279,7 +279,7 @@ export default function FormGerente() {
 			{currentStep === 2 && (
 			<section>
         <div className='flex flex-col gap-[12px]'>
-					<button onClick={() => { console.log(fotoFile) }}>Mostrar Foto</button>
+					{/* <button onClick={() => { console.log(fotoFile) }}>Mostrar Foto</button> */}
 					
 					<div className='flex flex-col w-full gap-[12px]'>
 						<FileInput placeholder="Foto 3x4" className="min-w-[260px]" onChange={handleFotoFileChange} name="fotoFile"/>

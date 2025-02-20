@@ -126,7 +126,7 @@ const Form: React.FC = () => {
   switch (currentStep) {
     case 1:
       return <>
-        <button onClick={() => { console.log(formData) }}>Mostrar formData</button>
+        {/* <button onClick={() => { console.log(formData) }}>Mostrar formData</button> */}
         <Step1
           nextStep={nextStep}
           updateLogin={(data) => updateLogin(data)}
@@ -161,7 +161,7 @@ const Form: React.FC = () => {
             <div className="fixed inset-0 bg-black/30 z-30" />
           </>
         )}
-        <button onClick={() => { console.log(formData) }}>Mostrar formData</button>
+        {/* <button onClick={() => { console.log(formData) }}>Mostrar formData</button> */}
         <Step4
           prevStep={prevStep}
           updateInfoSaude={(data) => updateDataAt(data, "saudeinfo")}

@@ -205,7 +205,7 @@ export default function FormColaborador() {
           <div className='mb-10'></div>
 
           <div className='flex flex-col gap-[12px]'>
-            <button onClick={() => { console.log(fotoFile) }}>Mostrar Foto</button>
+            {/* <button onClick={() => { console.log(fotoFile) }}>Mostrar Foto</button> */}
 
             <div className='flex flex-col md:flex-row w-full gap-[12px]'>
               <FileInput placeholder='Foto 3x4' className='min-w-[260px]' onChange={handleFotoFileChange} name='fotoFile' />
@@ -317,7 +317,7 @@ export default function FormColaborador() {
 			{currentStep === 2 && (	
 				<section>
           <div className='flex flex-col gap-[12px]'>
-            <button onClick={() => { console.log(fotoFile) }}>Mostrar Foto</button>
+            {/* <button onClick={() => { console.log(fotoFile) }}>Mostrar Foto</button> */}
 
             <div className='flex flex-col w-full gap-[12px]'>
               <FileInput placeholder='Foto 3x4' className='min-w-[280px]' onChange={handleFotoFileChange} name='fotoFile' />

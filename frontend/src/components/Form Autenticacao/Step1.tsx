@@ -239,7 +239,7 @@ const Step1: React.FC<{
       <div className='flex flex-col gap-[42px] px-5 lg:w-[840px] place-self-center'>
         <div className='flex flex-col gap-[12px]'>
           {error && <div ref={errorRef} className="text-[#FFF] font-medium text-center mt-4 bg-[#e13c31] py-3 rounded-xl">{error}</div>}
-          <button onClick={() => { console.log(login) }}>Mostrar login</button>
+          {/* <button onClick={() => { console.log(login) }}>Mostrar login</button> */}
           <h4 className='pl-2 place-self-start mt-8'>Crie seu login e senha</h4>
           <div className='flex flex-col md:flex-row w-full gap-3'>
             <TextInput error={isEmailMissing} className='md:w-1/2' placeholder='E-mail' value={login.email} onChange={(e) => handleLoginChange("email", e.target.value)} />

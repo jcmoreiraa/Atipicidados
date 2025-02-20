@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from '../../public/logo.svg';
+import perfil from '../../public/images/perfil.png'
 import { ConfigIcon } from "../../public/icons/Icons";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -100,8 +101,8 @@ export default function NavBar({ userEmail, userName }: NavBarProps) {
                             <p className="opacity-60">{userrEmail}</p>
                         </div>
                         <Image
-                            src={imagemData || logo}
-                            alt="logo atipicidades"
+                            src={imagemData || perfil}
+                            alt="foto de perfil"
                             width={44}
                             height={44}
                             className="rounded-full"

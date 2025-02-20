@@ -102,7 +102,7 @@ export default function CheckInput({ value, options, title, onChange, ...props }
               </div>
             ))}
           </div>
-          <button onClick={() => { console.log(selectedOptions) }}>Mostrar localOptions</button>
+          {/* <button onClick={() => { console.log(selectedOptions) }}>Mostrar localOptions</button> */}
           <button className="font-semibold tracking-tight text-blue-800" onClick={toggleOpen}>
             Outros...
           </button>

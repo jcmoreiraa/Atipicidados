@@ -138,7 +138,7 @@ const Step4: React.FC<{
 
         <div className='flex flex-col gap-[12px]'>
           <h4 className='pl-2'>Informações de saúde</h4>
-          <button onClick={() => { console.log(Step4) }}>Mostrar Respostas</button>
+          {/* <button onClick={() => { console.log(Step4) }}>Mostrar Respostas</button> */}
           <div className='flex flex-col md:flex-row w-full gap-[12px]'>
             <SelectInput
               options={["Sim, tem diagnóstico", "Não tem diagnóstico"]}
