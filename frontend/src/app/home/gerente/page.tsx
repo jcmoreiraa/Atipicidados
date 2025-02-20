@@ -47,8 +47,7 @@ function Home() {
         });
 
         if (!response.ok) {
-        //   router.push("/");
-          console.log(id)
+          router.push("/");
           return;
         }
       } catch (error: any) {
