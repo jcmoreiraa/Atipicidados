@@ -52,7 +52,7 @@ export default function Home() {
     let url = ""
     switch (userType) {
       case ("Gerente"):
-        url = "https://atipicidados-1.onrender.com/gerentes/login";
+        url = "https://atipicidados.onrender.com//gerentes/login";
         localStorage.setItem(userType, 'gerente');
         break;
       case ("Colaborador"):
