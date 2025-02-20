@@ -52,15 +52,15 @@ export default function Home() {
     let url = ""
     switch (userType) {
       case ("Gerente"):
-        url = "http://localhost:3002/gerentes/login";
+        url = "https://atipicidados-1.onrender.com/gerentes/login";
         localStorage.setItem(userType, 'gerente');
         break;
       case ("Colaborador"):
-        url = "http://localhost:3002/colaboradores/login"
+        url = "https://atipicidados-1.onrender.com/colaboradores/login"
         localStorage.setItem(userType, 'colaborador');
         break;
       case ("Paciente"):
-        url = "http://localhost:3002/pacientes/login"
+        url = "https://atipicidados-1.onrender.com/pacientes/login"
         localStorage.setItem(userType, 'paciente');
         break;
       default:

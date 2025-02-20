@@ -55,7 +55,7 @@ const Step3: React.FC<{ nextStep: () => void; prevStep: () => void; updateMaisIn
 
   const handleTest = async () => {
     try {
-      const teste = await fetch("http://localhost:3002/pacientes/", {
+      const teste = await fetch("https://atipicidados-1.onrender.com/pacientes/", {
         method: "POST",
         body: JSON.stringify(Step3),
         headers: { 'Content-Type': 'application/json' }
