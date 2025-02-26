@@ -48,7 +48,6 @@ export default function SelectInput({ placeholder, onChange, className, style, .
 
   useEffect(() => {
     IBGEapi();
-    setOptions(cidadesSort(options));
   }, [])
 
   const IBGEapi = async () => {
@@ -59,22 +58,21 @@ export default function SelectInput({ placeholder, onChange, className, style, .
       }
 
       const data = await response.json();
-      setOptions(data);
+      setOptions(cidadesSort(options));
     } catch (error) {
       console.error('Erro ao buscar imagem:', error);
     }
   }
 
-  const cidadesSort = (options: any[]) => {
-    const cidades: any[] = [];
-    options.forEach(element => {
-      if (element.municipio) {
-        cidades.push(element.municipio.nome);
-      }
-    });
+  const cidadesSort = (data: any[]) => {
+    let cidades: string[] = data
+      .filter(element => element.municipio)
+      .map(element => element.municipio.nome);
+
+    cidades = Array.from(new Set(cidades));
     cidades.sort();
-    return cidades.filter((item, index) => cidades.indexOf(item) === index);
-  }
+    return cidades;
+  };
 
   return (
     <div className={`relative inline-block text-left w-full ${className}`} style={style} ref={ref} {...props}>
