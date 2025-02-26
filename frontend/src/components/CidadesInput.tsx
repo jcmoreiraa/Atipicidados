@@ -65,7 +65,7 @@ export default function SelectInput({ placeholder, onChange, className, style, .
   }
 
   const cidadesSort = (data: any[]) => {
-    let cidades: string[] = data
+    let cidades: any[] = data
       .filter(element => element.municipio)
       .map(element => element.municipio.nome);
 
