@@ -69,7 +69,7 @@ export default function SelectInput({ placeholder, onChange, className, style, .
       .filter(element => element.municipio)
       .map(element => element.municipio.nome);
 
-    cidades = Array.from(new Set(cidades));
+    cidades = cidades.filter((item, index) => cidades.indexOf(item) === index);
     cidades.sort();
     return cidades;
   };
