@@ -72,6 +72,7 @@ export default function SelectInput({ placeholder, onChange, className, style, .
         cidades.push(element.municipio.nome);
       }
     });
+    cidades.sort();
     return cidades.filter((item, index) => cidades.indexOf(item) === index);
   }
 
