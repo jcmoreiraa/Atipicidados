@@ -259,7 +259,7 @@ const Step1: React.FC<{
           <TextInput placeholder="Endereço da escola" value={Step12.endereco} onChange={(e) => handleInputChange2("endereco", e.target.value)} />
 
           <div className='flex flex-col md:flex-row w-full gap-[12px]'>
-            <SelectInput placeholder={"Cidade da escola"} options={["Salvador", "Lauro de Freitas", "Camaçari", "Catu"]} onChange={(value) => handleInputChange2("cidade", value)} />
+            <CidadesInput placeholder={"Cidade da escola"} onChange={(value) => handleInputChange2("cidade", value)} />
             <SelectInput options={["Sim, possui ADI", "Não possui ADI"]} placeholder={"Possui ADI?"} onChange={(value) => handleInputChange2("possuiAdi", value)} />
           </div>
 
