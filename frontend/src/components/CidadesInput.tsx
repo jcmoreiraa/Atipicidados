@@ -68,11 +68,15 @@ export default function SelectInput({ placeholder, onChange, className, style, .
     let cidades: any[] = [];
     options.forEach(element => {
       if (element.municipio) {
+        console.log(element.municipio.nome);
         cidades.push(element.municipio.nome);
       }
     });
+    console.log("1", cidades);
     cidades = cidades.filter((item, index) => cidades.indexOf(item) === index);
+    console.log("2", cidades);
     cidades.sort();
+    console.log("3", cidades);
     return cidades;
   };
 
