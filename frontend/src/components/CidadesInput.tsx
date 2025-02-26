@@ -64,11 +64,13 @@ export default function SelectInput({ placeholder, onChange, className, style, .
     }
   }
 
-  const cidadesSort = (data: any[]) => {
-    let cidades: any[] = data
-      .filter(element => element.municipio)
-      .map(element => element.municipio.nome);
-
+  const cidadesSort = (options: any[]) => {
+    let cidades: any[] = [];
+    options.forEach(element => {
+      if (element.municipio) {
+        cidades.push(element.municipio.nome);
+      }
+    });
     cidades = cidades.filter((item, index) => cidades.indexOf(item) === index);
     cidades.sort();
     return cidades;
