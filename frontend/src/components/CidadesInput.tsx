@@ -44,11 +44,12 @@ export default function SelectInput({ placeholder, onChange, className, style, .
     };
   }, [isOpen]);
 
+  const [options, setOptions] = useState<any[]>([]);
+
   useEffect(() => {
     IBGEapi();
+    setOptions(cidadesSort(options));
   }, [])
-
-  const [options, setOptions] = useState<any[]>([]);
 
   const IBGEapi = async () => {
     try {
@@ -62,6 +63,16 @@ export default function SelectInput({ placeholder, onChange, className, style, .
     } catch (error) {
       console.error('Erro ao buscar imagem:', error);
     }
+  }
+
+  const cidadesSort = (options: any[]) => {
+    const cidades: any[] = [];
+    options.forEach(element => {
+      if (element.municipio) {
+        cidades.push(element.municipio.nome);
+      }
+    });
+    return cidades.filter((item, index) => cidades.indexOf(item) === index);
   }
 
   return (
@@ -93,7 +104,7 @@ export default function SelectInput({ placeholder, onChange, className, style, .
         unmountOnExit
       >
         <div className="absolute -mt-9 min-w-[250px] right-1 rounded-[9px] drop-shadow-menu bg-[#ECECEF] ring-1 ring-black ring-opacity-0 overflow-hidden z-40">
-          <div className="">
+          <div className="max-h-48 overflow-y-auto">
             {options.map((option, index) => (
               <div key={index}>
                 {index !== 0 &&
