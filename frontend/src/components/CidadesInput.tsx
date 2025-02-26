@@ -58,7 +58,7 @@ export default function SelectInput({ placeholder, onChange, className, style, .
       }
 
       const data = await response.json();
-      setOptions(cidadesSort(options));
+      setOptions(cidadesSort(data));
     } catch (error) {
       console.error('Erro ao buscar imagem:', error);
     }
