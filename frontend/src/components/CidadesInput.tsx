@@ -72,11 +72,8 @@ export default function SelectInput({ placeholder, onChange, className, style, .
         cidades.push(element.municipio.nome);
       }
     });
-    console.log("1", cidades);
     cidades = cidades.filter((item, index) => cidades.indexOf(item) === index);
-    console.log("2", cidades);
     cidades.sort();
-    console.log("3", cidades);
     return cidades;
   };
 
@@ -119,9 +116,9 @@ export default function SelectInput({ placeholder, onChange, className, style, .
                 }
                 <button
                   className="block w-full text-left px-3.5 py-[8px] text-sm hover:bg-black/[0.07] focus:outline-none focus:bg-black/[0.07]"
-                  onClick={() => handleOptionClick(option.nome)}
+                  onClick={() => handleOptionClick(option)}
                 >
-                  {option.nome}
+                  {option}
                 </button>
               </div>
             ))}
