@@ -31,6 +31,7 @@ export default function Home() {
   const [acesso, setAcesso] = useState("");
 
   const [imagemData, setImageData] = useState<string>("");
+  const [documents, setDocuments] = useState<string[]>([]);
 
   useEffect(() => {
     const email = localStorage.getItem("userEmail");
@@ -60,11 +61,15 @@ export default function Home() {
       console.error("Error fetching gerente data:", error);
     }
   };
-
+  // Puxa a foto de perfil e os documentos
   useEffect(() => {
     if (pacienteInfo?.fotofile) {
       const fotoNome = pacienteInfo.fotofile.slice(8);
       fetchFotoData(fotoNome);
+    }
+    if (pacienteInfo?.rgdocfile) {
+      const rgFileNome = pacienteInfo.rgdocfile.slice(8);
+      fetchDocumentsData(rgFileNome);
     }
   }, [pacienteInfo]);
 
@@ -78,6 +83,21 @@ export default function Home() {
       const imageBlob = await response.blob();
       const imageUrl = URL.createObjectURL(imageBlob);
       setImageData(imageUrl);
+    } catch (error) {
+      console.error('Erro ao buscar imagem:', error);
+    }
+  };
+
+  const fetchDocumentsData = async (docNome: string) => {
+    try {
+      const response = await fetch(`https://atipicidados.onrender.com/imagens/${docNome}`);
+      if (!response.ok) {
+        throw new Error('Fetch falhou');
+      }
+
+      const docBlob = await response.blob();
+      const docUrl = URL.createObjectURL(docBlob);
+      setDocuments(documentos => [...documentos, docUrl]);
     } catch (error) {
       console.error('Erro ao buscar imagem:', error);
     }
@@ -247,6 +267,27 @@ export default function Home() {
             </div>
           </div>
         </div>
+        {/* <div className="box w-full">
+          <h3>Documentos do Paciente</h3>
+          {pacienteInfo && pacienteInfo.documents && pacienteInfo.documents.length > 0 ? (
+            <ul className="list-disc pl-5">
+              {pacienteInfo.documents.map((doc: any, index: number) => (
+                <li key={index} className="py-2">
+                  <a
+                    href={`https://atipicidados.onrender.com/documentos/${doc.nomeArquivo}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline"
+                  >
+                    {doc.nomeArquivo}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-gray-500">Nenhum documento cadastrado.</p>
+          )}
+        </div> */}
       </div>
     </main>
   );

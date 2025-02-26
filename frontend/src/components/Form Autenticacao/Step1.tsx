@@ -261,7 +261,7 @@ const Step1: React.FC<{
           </div>
 
           <div className='flex flex-col md:flex-row w-full gap-[12px]'>
-            <FileInput placeholder='Foto do RG' onChange={handleRGFileChange} name='rgFile' id='rgFile' value={rgFile} />
+            <FileInput placeholder='Cópia do documento de identidade' onChange={handleRGFileChange} name='rgFile' id='rgFile' value={rgFile} />
             <FileInput placeholder='Comprovante de residência' onChange={handleResidenciaFileChange} name='residenciaFile' id='residenciaFile' value={residenciaFile} />
           </div>
 
@@ -273,7 +273,7 @@ const Step1: React.FC<{
 
 
           <div className='flex flex-col md:flex-row w-full gap-[12px]'>
-            <SelectInput value={Step11.sexo} options={["Masculino", "Feminino", "Intersexo", "Outro sexo", "Prefiro não dizer o sexo"]} placeholder={"Sexo"} onChange={(value) => handleInputChange1("sexo", value)} />
+            <SelectInput value={Step11.sexo} options={["Masculino", "Feminino", "Intersexo", "Outro sexo", "Prefiro não dizer o sexo"]} placeholder={"Sexo biológico"} onChange={(value) => handleInputChange1("sexo", value)} />
             <SelectInput value={Step11.cor} options={["Amarelo", "Branco", "Indígena", "Pardo", "Preto"]} placeholder={"Raça/cor"} onChange={(value) => handleInputChange1("cor", value)} />
             <TextInput placeholder='CEP' type="cep" className='min-w-[220px]' value={Step11.cep} onChange={(e) => handleInputChange1("cep", e.target.value)} />
           </div>

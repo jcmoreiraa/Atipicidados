@@ -281,7 +281,7 @@ function Home() {
           </div>
         </div>
 
-        <div className="mt-[28px] grid grid-cols-4 gap-2 w-full max-w-full">
+        <div className="mt-[28px] grid grid-cols-4 gap-2 w-full max-w-full md:flex-col">
           {filteredMembers.map((member) => (
             // eslint-disable-next-line react/jsx-key
             <button key={member.id} onClick={() => { urlToMemberPage(member) }} className="text-left">
