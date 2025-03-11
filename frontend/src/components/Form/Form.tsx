@@ -6,6 +6,7 @@ import Step3 from './Step3';
 import Step4 from './Step4';
 import { useRouter } from "next/navigation";
 import Loading from '../Loading';
+import { API_BASE_URL } from '@/utils/apiConfig';
 
 type Geral = {
   nome?: string;
@@ -68,7 +69,7 @@ const Form: React.FC = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch("https://atipicidados.onrender.com/pacientes/login", {
+      const response = await fetch(`${API_BASE_URL}/pacientes/login`, {
         method: "POST",
         body: JSON.stringify({ email: formData.email, password: formData.password }),
         headers: { 'Content-Type': 'application/json' }
@@ -138,7 +139,7 @@ const Form: React.FC = () => {
 
     try {
 
-      const response = await fetch("https://atipicidados.onrender.com/pacientes/", {
+      const response = await fetch("${API_BASE_URL}/pacientes/", {
         method: "POST",
         body: data, // mudar caso queira colocar o blob para body: formDataToSend, 
       })

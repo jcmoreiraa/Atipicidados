@@ -1,4 +1,5 @@
 'use client';
+import { API_BASE_URL } from "@/utils/apiConfig";
 import LogOut from "@/assets/icons/logout";
 import NavBar from "@/components/NavBar";
 import { useRouter } from 'next/navigation';
@@ -15,7 +16,7 @@ export default function Home() {
       const colaborador = colaboradorData?.toLowerCase();
       console.log(colaboradorData);
 
-      const response = await fetch(`https://atipicidados.onrender.com/${colaborador + 'es'}/id/${id}/changePassword`, {
+      const response = await fetch(`${API_BASE_URL}/${colaborador + 'es'}/id/${id}/changePassword`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

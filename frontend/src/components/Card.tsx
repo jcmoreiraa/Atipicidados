@@ -1,4 +1,5 @@
 "use client";
+import { API_BASE_URL } from "@/utils/apiConfig";
 import Image from "next/image";
 import perfil from '../../public/images/perfil.png'
 import Link from "next/link";
@@ -25,13 +26,13 @@ export function Card({ id, title, cpf, acesso, hasBorder = true }: CardProps) {
     let url = ""
     switch (acesso) {
       case ("Gerente"):
-        url = `https://atipicidados.onrender.com/gerentes/id/${id}`;
+        url = `${API_BASE_URL}/gerentes/id/${id}`;
         break;
       case ("Colaborador"):
-        url = `https://atipicidados.onrender.com/colaboradores/id/${id}`;
+        url = `${API_BASE_URL}/colaboradores/id/${id}`;
         break;
       case ("Paciente"):
-        url = `https://atipicidados.onrender.com/pacientes/id/${id}`;
+        url = `${API_BASE_URL}/pacientes/id/${id}`;
         break;
       default:
         console.error("Unknown user type");
@@ -63,7 +64,7 @@ export function Card({ id, title, cpf, acesso, hasBorder = true }: CardProps) {
 
   const fetchFotoData = async (fotoNome: string) => {
     try {
-      const response = await fetch(`https://atipicidados.onrender.com/imagens/${fotoNome}`);
+      const response = await fetch(`${API_BASE_URL}/imagens/${fotoNome}`);
       if (!response.ok) {
         throw new Error('Fetch falhou');
       }

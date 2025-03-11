@@ -4,6 +4,7 @@ import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
 import Step4 from './Step4';
+import { API_BASE_URL } from '@/utils/apiConfig';
 
 interface FormProps {
   id: any;
@@ -54,7 +55,7 @@ const Form: React.FC<FormProps> = ({ id }) => {
 
   const fetchData = async (id: any) => {
     try {
-      const response = await fetch(`https://atipicidados.onrender.com/pacientes/id/${id}`);
+      const response = await fetch(`${API_BASE_URL}/pacientes/id/${id}`);
       if (!response.ok) {
         throw new Error("Failed to fetch paciente data");
       }
@@ -90,7 +91,7 @@ const Form: React.FC<FormProps> = ({ id }) => {
         body[type] = JSON.stringify(data);
       }
 
-      const response = await fetch(`https://atipicidados.onrender.com/pacientes/put${type}`, {
+      const response = await fetch(`${API_BASE_URL}/pacientes/put${type}`, {
         method: "PUT",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),

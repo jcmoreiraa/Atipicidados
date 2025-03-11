@@ -6,6 +6,7 @@ import perfil from '../../public/images/perfil.png'
 import { ConfigIcon } from "../../public/icons/Icons";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { API_BASE_URL } from "@/utils/apiConfig";
 
 type Paciente = {
     nome: string;
@@ -43,7 +44,7 @@ export default function NavBar({ userEmail, userName }: NavBarProps) {
 
     const fetchPacienteData = async (id: any) => {
         try {
-            const response = await fetch(`https://atipicidados.onrender.com/pacientes/id/${id}`);
+            const response = await fetch(`${API_BASE_URL}/pacientes/id/${id}`);
             if (!response.ok) {
                 throw new Error("Failed to fetch paciente data");
             }
@@ -63,7 +64,7 @@ export default function NavBar({ userEmail, userName }: NavBarProps) {
 
     const fetchFotoData = async (fotoNome: string) => {
         try {
-            const response = await fetch(`https://atipicidados.onrender.com/imagens/${fotoNome}`);
+            const response = await fetch(`${API_BASE_URL}/imagens/${fotoNome}`);
             if (!response.ok) {
                 throw new Error('Fetch falhou');
             }

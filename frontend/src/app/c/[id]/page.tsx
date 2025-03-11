@@ -1,4 +1,5 @@
 "use client";
+import { API_BASE_URL } from "@/utils/apiConfig";
 import Image from "next/image";
 import NavBar from "@/components/NavBarPaciente";
 import perfil from "../../../../public/images/perfil.png";
@@ -55,7 +56,7 @@ export default function Home() {
 
   const fetchPacienteData = async (id: any) => {
     try {
-      const response = await fetch(`https://atipicidados.onrender.com/colaboradores/id/${id}`);
+      const response = await fetch(`${API_BASE_URL}/colaboradores/id/${id}`);
       if (!response.ok) {
         throw new Error("Failed to fetch gerente data");
       }
@@ -68,7 +69,7 @@ export default function Home() {
 
   const fetchUnidadeData = async () => {
     try {
-      const response = await fetch(`https://atipicidados.onrender.com/unidades/getUnidadeById/${pacienteInfo.unidadeId}`);
+      const response = await fetch(`${API_BASE_URL}/unidades/getUnidadeById/${pacienteInfo.unidadeId}`);
       if (!response.ok) {
         throw new Error("Failed to fetch unidades data");
       }
@@ -88,7 +89,7 @@ export default function Home() {
 
   const fetchFotoData = async (fotoNome: string) => {
     try {
-      const response = await fetch(`https://atipicidados.onrender.com/imagens/${fotoNome}`);
+      const response = await fetch(`${API_BASE_URL}/imagens/${fotoNome}`);
       if (!response.ok) {
         throw new Error('Fetch falhou');
       }

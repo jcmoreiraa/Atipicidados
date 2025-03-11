@@ -1,4 +1,5 @@
 "use client";
+import { API_BASE_URL } from "@/utils/apiConfig";
 import React, { useState } from "react";
 import TextInput from "./TextInput";
 import Termo from "./Termo";
@@ -26,7 +27,7 @@ export default function FormGerente() {
   // Handlers
   const handleUnityCreation = async () => {
     try {
-      const response = await fetch("https://atipicidados.onrender.com/unidades/", {
+      const response = await fetch(`${API_BASE_URL}/unidades/`, {
         method: "POST",
         body: JSON.stringify(formData),
         headers: { "Content-Type": "application/json" },

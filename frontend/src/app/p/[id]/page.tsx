@@ -1,4 +1,5 @@
 "use client";
+import { API_BASE_URL } from "@/utils/apiConfig";
 import Image from "next/image";
 import NavBar from "@/components/NavBarPaciente";
 import perfil from "../../../../public/images/perfil.png";
@@ -51,7 +52,7 @@ export default function Home() {
 
   const fetchPacienteData = async (id: any) => {
     try {
-      const response = await fetch(`https://atipicidados.onrender.com/pacientes/id/${id}`);
+      const response = await fetch(`${API_BASE_URL}/pacientes/id/${id}`);
       if (!response.ok) {
         throw new Error("Failed to fetch gerente data");
       }
@@ -71,11 +72,23 @@ export default function Home() {
       const rgFileNome = pacienteInfo.rgdocfile.slice(8);
       fetchDocumentsData(rgFileNome);
     }
+    if (pacienteInfo?.relescolar) {
+      const relescolarFileNome = pacienteInfo.relescolar.slice(8);
+      fetchDocumentsData(relescolarFileNome);
+    }
+    if (pacienteInfo?.laudofile) {
+      const laudoFileNome = pacienteInfo.laudofile.slice(8);
+      fetchDocumentsData(laudoFileNome);
+    }
+    if (pacienteInfo?.compresfile) {
+      const compresFileNome = pacienteInfo.compresfile.slice(8);
+      fetchDocumentsData(compresFileNome);
+    }
   }, [pacienteInfo]);
 
   const fetchFotoData = async (fotoNome: string) => {
     try {
-      const response = await fetch(`https://atipicidados.onrender.com/imagens/${fotoNome}`);
+      const response = await fetch(`${API_BASE_URL}/imagens/${fotoNome}`);
       if (!response.ok) {
         throw new Error('Fetch falhou');
       }
@@ -90,7 +103,7 @@ export default function Home() {
 
   const fetchDocumentsData = async (docNome: string) => {
     try {
-      const response = await fetch(`https://atipicidados.onrender.com/imagens/${docNome}`);
+      const response = await fetch(`${API_BASE_URL}/imagens/${docNome}`);
       if (!response.ok) {
         throw new Error('Fetch falhou');
       }
@@ -135,7 +148,7 @@ export default function Home() {
             <div className="flex flex-col gap-8">
               <div className="flex items-center gap-[20px]">
                 <Image
-                  src={perfil}
+                  src={imagemData || perfil}
                   alt='foto de perfil <nome do usuario>'
                   width={68}
                   height={68} />
@@ -269,12 +282,12 @@ export default function Home() {
         </div>
         {/* <div className="box w-full">
           <h3>Documentos do Paciente</h3>
-          {pacienteInfo && pacienteInfo.documents && pacienteInfo.documents.length > 0 ? (
+          {documents.length > 0 ? (
             <ul className="list-disc pl-5">
-              {pacienteInfo.documents.map((doc: any, index: number) => (
+              {documents.map((doc: any, index: number) => (
                 <li key={index} className="py-2">
                   <a
-                    href={`https://atipicidados.onrender.com/documentos/${doc.nomeArquivo}`}
+                    href={`${API_BASE_URL}/documentos/${doc.nomeArquivo}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline"

@@ -1,4 +1,5 @@
 "use client";
+import { API_BASE_URL } from "@/utils/apiConfig";
 import React, { useState } from "react";
 import SelectInput from "./SelectInput";
 import TextInput from "./TextInput";
@@ -71,7 +72,7 @@ export default function FormGerente() {
   // Handlers
   const handleUserCreation = async () => {
     try {
-      const response = await fetch("https://atipicidados.onrender.com/gerentes/", {
+      const response = await fetch(`${API_BASE_URL}/gerentes/`, {
         method: "POST",
         body: JSON.stringify(formData),
         headers: { "Content-Type": "application/json" },

@@ -1,4 +1,5 @@
 "use client";
+import { API_BASE_URL } from "@/utils/apiConfig";
 import PlusIcon from "@/assets/icons/plus";
 import SearchIcon from "@/assets/icons/search";
 import { Card } from "@/components/Card";
@@ -41,15 +42,15 @@ function Home() {
 
   const fetchData = async () => {
     try {
-      const responseColaborador = await fetch("https://atipicidados.onrender.com/colaboradores/getall");
+      const responseColaborador = await fetch(`${API_BASE_URL}/colaboradores/getall`);
       const dataColaborador = await responseColaborador.json();
       setColaboradores(dataColaborador.colaboradores || []);
 
-      const responsePaciente = await fetch(`https://atipicidados.onrender.com/pacientes/getall/${id}`, { credentials: 'include' });
+      const responsePaciente = await fetch(`${API_BASE_URL}/pacientes/getall/${id}`, { credentials: 'include' });
       const dataPaciente = await responsePaciente.json();
       setPacientes(dataPaciente.pacientes || []);
 
-      const responseGerente = await fetch(`https://atipicidados.onrender.com/gerentes/getall/${id}`, { credentials: 'include' });
+      const responseGerente = await fetch(`${API_BASE_URL}/gerentes/getall/${id}`, { credentials: 'include' });
       const dataGerente = await responseGerente.json();
       setGerentes(dataGerente.gerentes || []);
     } catch (error) {
@@ -70,7 +71,7 @@ function Home() {
 
   const fetchColaboradorData = async (id: string) => {
     try {
-      const response = await fetch(`https://atipicidados.onrender.com/colaboradores/id/${id}`);
+      const response = await fetch(`${API_BASE_URL}/colaboradores/id/${id}`);
       const data = await response.json();
       setColaboradorInfo(data);
     } catch (error) {

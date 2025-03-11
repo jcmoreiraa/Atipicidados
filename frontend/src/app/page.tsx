@@ -1,5 +1,5 @@
 "use client";
-
+import { API_BASE_URL } from "@/utils/apiConfig";
 import Image from "next/image";
 import logoDesktop from "../../public/images/logos.svg";
 import logoMobile from '../../public/images/logo.png';
@@ -52,15 +52,15 @@ export default function Home() {
     let url = ""
     switch (userType) {
       case ("Gerente"):
-        url = "https://atipicidados.onrender.com/gerentes/login";
+        url = `${API_BASE_URL}/gerentes/login`;
         localStorage.setItem(userType, 'gerente');
         break;
       case ("Colaborador"):
-        url = "https://atipicidados.onrender.com/colaboradores/login"
+        url = `${API_BASE_URL}/colaboradores/login`
         localStorage.setItem(userType, 'colaborador');
         break;
       case ("Paciente"):
-        url = "https://atipicidados.onrender.com/pacientes/login"
+        url = `${API_BASE_URL}/pacientes/login`
         localStorage.setItem(userType, 'paciente');
         break;
       default:

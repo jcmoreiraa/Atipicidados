@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Step1 from './Step1';
 import { useRouter } from 'next/navigation';
+import { API_BASE_URL } from '@/utils/apiConfig';
 
 interface FormData {
   email: string | null;
@@ -111,7 +112,7 @@ const Form: React.FC = () => {
     } : "";
 
     try {
-      const response = await fetch("https://atipicidados.onrender.com/colaboradores/", {
+      const response = await fetch(`${API_BASE_URL}/colaboradores/`, {
         method: "POST",
         body: JSON.stringify(dataJSON),
         headers: { 'Content-Type': 'application/json' },
