@@ -139,7 +139,7 @@ const Form: React.FC = () => {
 
     try {
 
-      const response = await fetch("${API_BASE_URL}/pacientes/", {
+      const response = await fetch(`${API_BASE_URL}/pacientes/`, {
         method: "POST",
         body: data, // mudar caso queira colocar o blob para body: formDataToSend, 
       })

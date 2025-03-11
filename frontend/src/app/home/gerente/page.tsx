@@ -139,7 +139,7 @@ function Home() {
   };
   const fetchColaboradores = async () => {
     try {
-      const response = await fetch("${API_BASE_URL}/colaboradores/getall");
+      const response = await fetch(`${API_BASE_URL}/colaboradores/getall`);
       if (!response.ok) {
         throw new Error("Failed to fetch colaboradores data");
       }
