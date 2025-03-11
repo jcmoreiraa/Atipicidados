@@ -1,14 +1,14 @@
 import Form from "@/components/Form/Form";
-import logo from "../../../public/images/logo.png"
+import logoDesktop from "../../../public/images/logos.svg"
 import Image from "next/image";
 
 export default function Home() {
   return (
     <main className="flex flex-col min-h-screen">
       <Image
-        src={logo}
+        src={logoDesktop}
         alt="logo atipicidades"
-        width={60}
+        height={60}
         className="ml-[57px] mt-5" />
 
 
