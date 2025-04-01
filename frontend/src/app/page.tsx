@@ -9,7 +9,7 @@ import Link from "next/link";
 import Checkbox from "@/components/Checkbox";
 import { useRouter } from "next/navigation";
 import Loading from "@/components/Loading";
-import Banner from "../../public/pexels-fabiano-cardoso-1671860-5654263.png";
+import Banner from "../../public/atipicidados_capa_efeito_azul.png";
 
 export default function Home() {
   const [userType, setUserType] = useState("");
@@ -134,7 +134,7 @@ export default function Home() {
       <div className="hidden lg:flex w-[60%] justify-center items-center">
         <Image
           src={Banner}
-          alt="logos atipicidades"
+          alt="Crianças se divertindo"
           className="h-full object-cover w-full"
         />
       </div>

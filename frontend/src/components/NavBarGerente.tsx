@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import logo from '../../public/logo.svg';
+import logoDesktop from "../../public/images/logos.svg"
 import perfil from '../../public/images/perfil.png'
 import { ConfigIcon } from "../../public/icons/Icons";
 import { usePathname } from "next/navigation";
@@ -93,11 +93,10 @@ export default function NavBar({ userEmail, userName, ...props }: NavBarProps) {
       <div className="flex justify-between fundo w-full h-[76px] py-2 px-[20px] sm:px-[97px]">
         <Link href={homeLink}>
           <Image
-            src={logo}
+            src={logoDesktop}
             alt="logo atipicidades"
-            width={60}
             height={60}
-          />
+            className="ml-[57px] mt-5" />
         </Link>
 
         {/* Menu - Large and Medium Screens */}
