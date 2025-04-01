@@ -264,7 +264,7 @@ const Step4: React.FC<{
           <Termo isVisible={isModalVisible} onClose={closeModal} />
         </div>
         {termError && (
-          <div className="text-red-500 text-sm ml-6">
+          <div className="text-[#e13c31] text-sm ml-4 -mt-5">
             Você deve aceitar os termos para continuar
           </div>
         )}
