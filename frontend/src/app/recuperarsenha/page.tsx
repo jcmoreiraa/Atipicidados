@@ -1,4 +1,5 @@
 "use client";
+import { API_BASE_URL } from "@/utils/apiConfig";
 import Checkbox from "@/components/Checkbox";
 import TextInput from "@/components/TextInput";
 import Link from "next/link";
@@ -27,13 +28,13 @@ export default function Home() {
     let url = ""
     switch (userType) {
       case ("Gerente"):
-        url = "https://atipicidados-1.onrender.com/gerentes/senha"
+        url = `${API_BASE_URL}/gerentes/senha`
         break;
       case ("Colaborador"):
-        url = "https://atipicidados-1.onrender.com/colaboradores/senha"
+        url = `${API_BASE_URL}/colaboradores/senha`
         break;
       case ("Paciente"):
-        url = "https://atipicidados-1.onrender.com/pacientes/senha"
+        url = `${API_BASE_URL}/pacientes/senha`
         break;
       default:
         console.error("Unknown user type");

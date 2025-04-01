@@ -1,4 +1,5 @@
 "use client";
+import { API_BASE_URL } from "@/utils/apiConfig";
 import React, { useState } from "react";
 import SelectInput from "./SelectInput";
 import TextInput from "./TextInput";
@@ -103,7 +104,7 @@ export default function FormColaborador() {
   // Handlers
   const handleUserCreation = async () => {
     try {
-      const response = await fetch("https://atipicidados-1.onrender.com/colaboradores/", {
+      const response = await fetch(`${API_BASE_URL}/colaboradores/`, {
         method: "POST",
         body: JSON.stringify(formData),
         headers: { "Content-Type": "application/json" },
@@ -205,7 +206,7 @@ export default function FormColaborador() {
           <div className='mb-10'></div>
 
           <div className='flex flex-col gap-[12px]'>
-            <button onClick={() => { console.log(fotoFile) }}>Mostrar Foto</button>
+            {/* <button onClick={() => { console.log(fotoFile) }}>Mostrar Foto</button> */}
 
             <div className='flex flex-col md:flex-row w-full gap-[12px]'>
               <FileInput placeholder='Foto 3x4' className='min-w-[260px]' onChange={handleFotoFileChange} name='fotoFile' />
@@ -317,7 +318,7 @@ export default function FormColaborador() {
 			{currentStep === 2 && (	
 				<section>
           <div className='flex flex-col gap-[12px]'>
-            <button onClick={() => { console.log(fotoFile) }}>Mostrar Foto</button>
+            {/* <button onClick={() => { console.log(fotoFile) }}>Mostrar Foto</button> */}
 
             <div className='flex flex-col w-full gap-[12px]'>
               <FileInput placeholder='Foto 3x4' className='min-w-[280px]' onChange={handleFotoFileChange} name='fotoFile' />

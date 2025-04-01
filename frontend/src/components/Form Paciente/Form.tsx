@@ -6,6 +6,7 @@ import Step3 from './Step3';
 import Step4 from './Step4';
 import { useRouter } from "next/navigation";
 import Loading from '../Loading';
+import { API_BASE_URL } from '@/utils/apiConfig';
 
 type Geral = {
   nome?: string;
@@ -106,7 +107,7 @@ const Form: React.FC = () => {
 
     try {
 
-      const response = await fetch("https://atipicidados-1.onrender.com/pacientes/", {
+      const response = await fetch(`${API_BASE_URL}/pacientes/`, {
         method: "POST",
         body: data, // mudar caso queira colocar o blob para body: formDataToSend, 
         // headers: { 'Content-Type': 'application/json' }
@@ -126,7 +127,7 @@ const Form: React.FC = () => {
   switch (currentStep) {
     case 1:
       return <>
-        <button onClick={() => { console.log(formData) }}>Mostrar formData</button>
+        {/* <button onClick={() => { console.log(formData) }}>Mostrar formData</button> */}
         <Step1
           nextStep={nextStep}
           updateLogin={(data) => updateLogin(data)}
@@ -161,7 +162,7 @@ const Form: React.FC = () => {
             <div className="fixed inset-0 bg-black/30 z-30" />
           </>
         )}
-        <button onClick={() => { console.log(formData) }}>Mostrar formData</button>
+        {/* <button onClick={() => { console.log(formData) }}>Mostrar formData</button> */}
         <Step4
           prevStep={prevStep}
           updateInfoSaude={(data) => updateDataAt(data, "saudeinfo")}

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Step1 from './Step1';
 import { useRouter } from 'next/navigation';
+import { API_BASE_URL } from '@/utils/apiConfig';
 
 interface FormData {
   email: string | null;
@@ -111,7 +112,7 @@ const Form: React.FC = () => {
     } : "";
 
     try {
-      const response = await fetch("https://atipicidados-1.onrender.com/colaboradores/", {
+      const response = await fetch(`${API_BASE_URL}/colaboradores/`, {
         method: "POST",
         body: JSON.stringify(dataJSON),
         headers: { 'Content-Type': 'application/json' },
@@ -127,7 +128,7 @@ const Form: React.FC = () => {
         console.log('Erro do servidor:', responseText);
       }
 
-      // router.push("/")
+      router.push("/")
     } catch (error) {
       console.error("Erro ao criar gerente:", error);
     }
@@ -137,7 +138,7 @@ const Form: React.FC = () => {
     case 1:
       return (
         <>
-          <button onClick={() => { console.log(formData) }}>Mostrar formData</button>
+          {/* <button onClick={() => { console.log(formData) }}>Mostrar formData</button> */}
           <Step1
             handleFormDataSubmit={handleUserCreation}
             updateLogin={(data) => updateLogin(data)}

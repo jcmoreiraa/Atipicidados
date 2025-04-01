@@ -1,4 +1,5 @@
 "use client";
+import { API_BASE_URL } from "@/utils/apiConfig";
 import PlusIcon from "@/assets/icons/plus";
 import SearchIcon from "@/assets/icons/search";
 import { Card } from "@/components/Card";
@@ -41,7 +42,7 @@ function Home() {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await fetch(`https://atipicidados-1.onrender.com/gerentes/token/${id}`, {
+        const response = await fetch(`${API_BASE_URL}/gerentes/token/${id}`, {
           method: "POST",
           credentials: "include",
         });
@@ -100,7 +101,7 @@ function Home() {
 
   const fetchGerenteData = async (id: any) => {
     try {
-      const response = await fetch(`https://atipicidados-1.onrender.com/gerentes/id/${id}`);
+      const response = await fetch(`${API_BASE_URL}/gerentes/id/${id}`);
       if (!response.ok) {
         throw new Error("Failed to fetch gerente data");
       }
@@ -113,7 +114,7 @@ function Home() {
 
   const fetchPacientes = async () => {
     try {
-      const response = await fetch(`https://atipicidados-1.onrender.com/pacientes/getall/${id}`, { credentials: 'include' });
+      const response = await fetch(`${API_BASE_URL}/pacientes/getall/${id}`, { credentials: 'include' });
       if (!response.ok) {
         throw new Error("Failed to fetch pacientes data");
       }
@@ -126,7 +127,7 @@ function Home() {
   };
   const fetchGerentes = async () => {
     try {
-      const response = await fetch(`https://atipicidados-1.onrender.com/gerentes/getall/${id}`, { credentials: 'include' });
+      const response = await fetch(`${API_BASE_URL}/gerentes/getall/${id}`, { credentials: 'include' });
       if (!response.ok) {
         throw new Error("Failed to fetch gerentes data");
       }
@@ -138,7 +139,7 @@ function Home() {
   };
   const fetchColaboradores = async () => {
     try {
-      const response = await fetch("https://atipicidados-1.onrender.com/colaboradores/getall");
+      const response = await fetch(`${API_BASE_URL}/colaboradores/getall`);
       if (!response.ok) {
         throw new Error("Failed to fetch colaboradores data");
       }
@@ -281,7 +282,7 @@ function Home() {
           </div>
         </div>
 
-        <div className="mt-[28px] grid grid-cols-4 gap-2 w-full max-w-full">
+        <div className="mt-[28px] grid grid-cols-4 gap-2 w-full max-w-full md:flex-col">
           {filteredMembers.map((member) => (
             // eslint-disable-next-line react/jsx-key
             <button key={member.id} onClick={() => { urlToMemberPage(member) }} className="text-left">

@@ -5,6 +5,7 @@ import logo from '../../public/logo.svg';
 import { ConfigIcon } from "../../public/icons/Icons";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { API_BASE_URL } from "@/utils/apiConfig";
 
 type Gerente = {
     nome: string;
@@ -38,7 +39,7 @@ export default function NavBar({ userEmail, userName }: NavBarProps) {
 
     const fetchGerenteData = async (id: any) => {
         try {
-            const response = await fetch(`https://atipicidados-1.onrender.com/gerentes/${id}`);
+            const response = await fetch(`${API_BASE_URL}/gerentes/${id}`);
             if (!response.ok) {
                 throw new Error("Failed to fetch gerente data");
             }

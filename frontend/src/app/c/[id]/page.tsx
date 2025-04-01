@@ -1,4 +1,5 @@
 "use client";
+import { API_BASE_URL } from "@/utils/apiConfig";
 import Image from "next/image";
 import NavBar from "@/components/NavBarPaciente";
 import perfil from "../../../../public/images/perfil.png";
@@ -23,7 +24,16 @@ export default function Home() {
   const [homeLink, setHomeLink] = useState("");
   const [imagemData, setImageData] = useState<string>("");
   const [unidade, setUnidade] = useState<any | null>(null);
-
+  /* A unidade data é retornada nesse modelo:
+  {
+    "error": false,
+    "unidade": {
+      "id": 1,
+      "nome": "teste",
+      "endereco": "teste"
+  }
+  }
+  */
   const [memberID, setMemberID] = useState("");
   const [acesso, setAcesso] = useState("");
 
@@ -33,7 +43,7 @@ export default function Home() {
     const acs = localStorage.getItem("acs");
     const homeLink = localStorage.getItem("homeLink");
     if (email) setUserrEmail(email);
-    
+
     if (id) fetchPacienteData(id);
 
     if (acs) {
@@ -46,7 +56,7 @@ export default function Home() {
 
   const fetchPacienteData = async (id: any) => {
     try {
-      const response = await fetch(`https://atipicidados-1.onrender.com/colaboradores/id/${id}`);
+      const response = await fetch(`${API_BASE_URL}/colaboradores/id/${id}`);
       if (!response.ok) {
         throw new Error("Failed to fetch gerente data");
       }
@@ -59,7 +69,7 @@ export default function Home() {
 
   const fetchUnidadeData = async () => {
     try {
-      const response = await fetch(`https://atipicidados-1.onrender.com/unidades/getUnidadeById/${pacienteInfo.unidadeId}`);
+      const response = await fetch(`${API_BASE_URL}/unidades/getUnidadeById/${pacienteInfo.unidadeId}`);
       if (!response.ok) {
         throw new Error("Failed to fetch unidades data");
       }
@@ -72,21 +82,21 @@ export default function Home() {
 
   useEffect(() => {
     if (pacienteInfo?.fotofile) {
-      const fotoNome = pacienteInfo.fotofile.slice(8); 
+      const fotoNome = pacienteInfo.fotofile.slice(8);
       fetchFotoData(fotoNome);
     }
   }, [pacienteInfo]);
 
   const fetchFotoData = async (fotoNome: string) => {
     try {
-      const response = await fetch(`https://atipicidados-1.onrender.com/imagens/${fotoNome}`);
+      const response = await fetch(`${API_BASE_URL}/imagens/${fotoNome}`);
       if (!response.ok) {
         throw new Error('Fetch falhou');
       }
 
       const imageBlob = await response.blob();
       const imageUrl = URL.createObjectURL(imageBlob);
-      setImageData(imageUrl); 
+      setImageData(imageUrl);
     } catch (error) {
       console.error('Erro ao buscar imagem:', error);
     }
@@ -151,7 +161,7 @@ export default function Home() {
                 <div className="flex flex-col gap-6">
                   <div>
                     <p className="titulo">Unidade vinculada:</p>
-                    <p>{unidade ? unidade.nome : "Unidade não encontrada"}</p>
+                    <p>{unidade?.unidade?.nome || "Unidade não encontrada"}</p>
                   </div>
 
                   <div>

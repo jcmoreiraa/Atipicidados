@@ -1,10 +1,12 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import logo from '../../public/logo.svg';
+import logoDesktop from "../../public/images/logos.svg"
+import perfil from '../../public/images/perfil.png'
 import { ConfigIcon } from "../../public/icons/Icons";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { API_BASE_URL } from "@/utils/apiConfig";
 
 type Gerente = {
   nome: string;
@@ -48,7 +50,7 @@ export default function NavBar({ userEmail, userName, ...props }: NavBarProps) {
 
   const fetchGerenteData = async (id: any) => {
     try {
-      const response = await fetch(`https://atipicidados-1.onrender.com/gerentes/id/${id}`);
+      const response = await fetch(`${API_BASE_URL}/gerentes/id/${id}`);
       if (!response.ok) {
         throw new Error("Failed to fetch gerente data");
       }
@@ -68,7 +70,7 @@ export default function NavBar({ userEmail, userName, ...props }: NavBarProps) {
 
   const fetchFotoData = async (fotoNome: string) => {
     try {
-      const response = await fetch(`https://atipicidados-1.onrender.com/imagens/${fotoNome}`);
+      const response = await fetch(`${API_BASE_URL}/imagens/${fotoNome}`);
       if (!response.ok) {
         throw new Error('Fetch falhou');
       }
@@ -91,11 +93,10 @@ export default function NavBar({ userEmail, userName, ...props }: NavBarProps) {
       <div className="flex justify-between fundo w-full h-[76px] py-2 px-[20px] sm:px-[97px]">
         <Link href={homeLink}>
           <Image
-            src={logo}
+            src={logoDesktop}
             alt="logo atipicidades"
-            width={60}
             height={60}
-          />
+            className="ml-[57px] mt-5" />
         </Link>
 
         {/* Menu - Large and Medium Screens */}
@@ -116,8 +117,8 @@ export default function NavBar({ userEmail, userName, ...props }: NavBarProps) {
               <p className="opacity-60">{userrEmail}</p>
             </div>
             <Image
-              src={imagemData || logo}
-              alt="logo atipicidades"
+              src={imagemData || perfil}
+              alt="foto de perfil"
               width={44}
               height={44}
               className="rounded-full"

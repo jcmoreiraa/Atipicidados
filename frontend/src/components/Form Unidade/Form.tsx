@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Step1 from './Step1';
 import { FormData } from './types';
 import { useRouter } from 'next/navigation';
+import { API_BASE_URL } from '@/utils/apiConfig';
 
 const Form: React.FC = () => {
   const router = useRouter();
@@ -25,7 +26,7 @@ const Form: React.FC = () => {
 
   const handleUserCreation = async () => {
     try {
-      const teste = await fetch("https://atipicidados-1.onrender.com/unidades/", {
+      const teste = await fetch(`${API_BASE_URL}/unidades/`, {
         method: "POST",
         body: JSON.stringify(formData),
         headers: { 'Content-Type': 'application/json' }
@@ -41,7 +42,7 @@ const Form: React.FC = () => {
   switch (currentStep) {
     case 1:
       return <>
-        <button onClick={() => { console.log(formData) }}>Mostrar formData</button>
+        {/* <button onClick={() => { console.log(formData) }}>Mostrar formData</button> */}
         <Step1
           handleFormDataSubmit={handleUserCreation}
           updateForm={(data) => updateForm(data)}

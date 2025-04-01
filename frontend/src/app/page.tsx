@@ -1,5 +1,5 @@
 "use client";
-
+import { API_BASE_URL } from "@/utils/apiConfig";
 import Image from "next/image";
 import logoDesktop from "../../public/images/logos.svg";
 import logoMobile from '../../public/images/logo.png';
@@ -9,7 +9,7 @@ import Link from "next/link";
 import Checkbox from "@/components/Checkbox";
 import { useRouter } from "next/navigation";
 import Loading from "@/components/Loading";
-import Banner from "../../public/pexels-fabiano-cardoso-1671860-5654263.png";
+import Banner from "../../public/atipicidados_capa_efeito_azul.png";
 
 export default function Home() {
   const [userType, setUserType] = useState("");
@@ -52,15 +52,15 @@ export default function Home() {
     let url = ""
     switch (userType) {
       case ("Gerente"):
-        url = "https://atipicidados-1.onrender.com/gerentes/login";
+        url = `${API_BASE_URL}/gerentes/login`;
         localStorage.setItem(userType, 'gerente');
         break;
       case ("Colaborador"):
-        url = "https://atipicidados-1.onrender.com/colaboradores/login"
+        url = `${API_BASE_URL}/colaboradores/login`
         localStorage.setItem(userType, 'colaborador');
         break;
       case ("Paciente"):
-        url = "https://atipicidados-1.onrender.com/pacientes/login"
+        url = `${API_BASE_URL}/pacientes/login`
         localStorage.setItem(userType, 'paciente');
         break;
       default:
@@ -134,7 +134,7 @@ export default function Home() {
       <div className="hidden lg:flex w-[60%] justify-center items-center">
         <Image
           src={Banner}
-          alt="logos atipicidades"
+          alt="Crianças se divertindo"
           className="h-full object-cover w-full"
         />
       </div>

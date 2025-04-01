@@ -4,6 +4,7 @@ import SelectInput from '../SelectInput';
 import TextInput from '../TextInput';
 import FileInput from '../FileInput';
 import DateInput from '../DateInput';
+import CidadesInput from '../CidadesInput';
 
 type Step11State = {
   nome: string | undefined;
@@ -239,7 +240,7 @@ const Step1: React.FC<{
       <div className='flex flex-col gap-[42px] px-5 lg:w-[840px] place-self-center'>
         <div className='flex flex-col gap-[12px]'>
           {error && <div ref={errorRef} className="text-[#FFF] font-medium text-center mt-4 bg-[#e13c31] py-3 rounded-xl">{error}</div>}
-          <button onClick={() => { console.log(login) }}>Mostrar login</button>
+          {/* <button onClick={() => { console.log(login) }}>Mostrar login</button> */}
           <h4 className='pl-2 place-self-start mt-8'>Crie seu login e senha</h4>
           <div className='flex flex-col md:flex-row w-full gap-3'>
             <TextInput error={isEmailMissing} className='md:w-1/2' placeholder='E-mail' value={login.email} onChange={(e) => handleLoginChange("email", e.target.value)} />
@@ -261,7 +262,7 @@ const Step1: React.FC<{
           </div>
 
           <div className='flex flex-col md:flex-row w-full gap-[12px]'>
-            <FileInput placeholder='Foto do RG' onChange={handleRGFileChange} name='rgFile' id='rgFile' value={rgFile} />
+            <FileInput placeholder='Cópia do documento de identidade' onChange={handleRGFileChange} name='rgFile' id='rgFile' value={rgFile} />
             <FileInput placeholder='Comprovante de residência' onChange={handleResidenciaFileChange} name='residenciaFile' id='residenciaFile' value={residenciaFile} />
           </div>
 
@@ -273,14 +274,14 @@ const Step1: React.FC<{
 
 
           <div className='flex flex-col md:flex-row w-full gap-[12px]'>
-            <SelectInput value={Step11.sexo} options={["Masculino", "Feminino", "Intersexo", "Outro sexo", "Prefiro não dizer o sexo"]} placeholder={"Sexo"} onChange={(value) => handleInputChange1("sexo", value)} />
+            <SelectInput value={Step11.sexo} options={["Masculino", "Feminino", "Intersexo", "Outro sexo", "Prefiro não dizer o sexo"]} placeholder={"Sexo biológico"} onChange={(value) => handleInputChange1("sexo", value)} />
             <SelectInput value={Step11.cor} options={["Amarelo", "Branco", "Indígena", "Pardo", "Preto"]} placeholder={"Raça/cor"} onChange={(value) => handleInputChange1("cor", value)} />
             <TextInput placeholder='CEP' type="cep" className='min-w-[220px]' value={Step11.cep} onChange={(e) => handleInputChange1("cep", e.target.value)} />
           </div>
 
           <div className='flex flex-col md:flex-row w-full gap-[12px]'>
             <TextInput placeholder="Endereço" value={Step11.endereco} onChange={(e) => handleInputChange1("endereco", e.target.value)} />
-            <SelectInput value={Step11.cidade} options={["Salvador", "Lauro de Freitas", "Camaçari", "Catu"]} placeholder={"Cidade"} onChange={(value) => handleInputChange1("cidade", value)} />
+            <CidadesInput value={Step11.cidade} placeholder={"Cidade"} onChange={(value) => handleInputChange1("cidade", value)} />
           </div>
         </div>
 
@@ -295,7 +296,7 @@ const Step1: React.FC<{
           <TextInput placeholder="Endereço da escola" value={Step12.endereco} onChange={(e) => handleInputChange2("endereco", e.target.value)} />
 
           <div className='flex flex-col md:flex-row w-full gap-[12px]'>
-            <SelectInput value={Step12.cidade} placeholder={"Cidade da escola"} options={["Salvador", "Lauro de Freitas", "Camaçari", "Catu"]} onChange={(value) => handleInputChange2("cidade", value)} />
+            <CidadesInput value={Step12.cidade} placeholder={"Cidade da escola"} onChange={(value) => handleInputChange2("cidade", value)} />
             <SelectInput value={Step12.possuiAdi} options={["Sim, possui ADI", "Não possui ADI"]} placeholder={"Possui ADI?"} onChange={(value) => handleInputChange2("possuiAdi", value)} />
           </div>
 

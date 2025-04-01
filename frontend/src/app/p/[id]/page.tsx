@@ -1,4 +1,5 @@
 "use client";
+import { API_BASE_URL } from "@/utils/apiConfig";
 import Image from "next/image";
 import NavBar from "@/components/NavBarPaciente";
 import perfil from "../../../../public/images/perfil.png";
@@ -31,6 +32,7 @@ export default function Home() {
   const [acesso, setAcesso] = useState("");
 
   const [imagemData, setImageData] = useState<string>("");
+  const [documents, setDocuments] = useState<string[]>([]);
 
   useEffect(() => {
     const email = localStorage.getItem("userEmail");
@@ -50,7 +52,7 @@ export default function Home() {
 
   const fetchPacienteData = async (id: any) => {
     try {
-      const response = await fetch(`https://atipicidados-1.onrender.com/pacientes/id/${id}`);
+      const response = await fetch(`${API_BASE_URL}/pacientes/id/${id}`);
       if (!response.ok) {
         throw new Error("Failed to fetch gerente data");
       }
@@ -60,17 +62,33 @@ export default function Home() {
       console.error("Error fetching gerente data:", error);
     }
   };
-
+  // Puxa a foto de perfil e os documentos
   useEffect(() => {
     if (pacienteInfo?.fotofile) {
       const fotoNome = pacienteInfo.fotofile.slice(8);
       fetchFotoData(fotoNome);
     }
+    if (pacienteInfo?.rgdocfile) {
+      const rgFileNome = pacienteInfo.rgdocfile.slice(8);
+      fetchDocumentsData(rgFileNome);
+    }
+    if (pacienteInfo?.relescolar) {
+      const relescolarFileNome = pacienteInfo.relescolar.slice(8);
+      fetchDocumentsData(relescolarFileNome);
+    }
+    if (pacienteInfo?.laudofile) {
+      const laudoFileNome = pacienteInfo.laudofile.slice(8);
+      fetchDocumentsData(laudoFileNome);
+    }
+    if (pacienteInfo?.compresfile) {
+      const compresFileNome = pacienteInfo.compresfile.slice(8);
+      fetchDocumentsData(compresFileNome);
+    }
   }, [pacienteInfo]);
 
   const fetchFotoData = async (fotoNome: string) => {
     try {
-      const response = await fetch(`https://atipicidados-1.onrender.com/imagens/${fotoNome}`);
+      const response = await fetch(`${API_BASE_URL}/imagens/${fotoNome}`);
       if (!response.ok) {
         throw new Error('Fetch falhou');
       }
@@ -78,6 +96,21 @@ export default function Home() {
       const imageBlob = await response.blob();
       const imageUrl = URL.createObjectURL(imageBlob);
       setImageData(imageUrl);
+    } catch (error) {
+      console.error('Erro ao buscar imagem:', error);
+    }
+  };
+
+  const fetchDocumentsData = async (docNome: string) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/imagens/${docNome}`);
+      if (!response.ok) {
+        throw new Error('Fetch falhou');
+      }
+
+      const docBlob = await response.blob();
+      const docUrl = URL.createObjectURL(docBlob);
+      setDocuments(documentos => [...documentos, docUrl]);
     } catch (error) {
       console.error('Erro ao buscar imagem:', error);
     }
@@ -115,7 +148,7 @@ export default function Home() {
             <div className="flex flex-col gap-8">
               <div className="flex items-center gap-[20px]">
                 <Image
-                  src={perfil}
+                  src={imagemData || perfil}
                   alt='foto de perfil <nome do usuario>'
                   width={68}
                   height={68} />
@@ -247,6 +280,27 @@ export default function Home() {
             </div>
           </div>
         </div>
+        {/* <div className="box w-full">
+          <h3>Documentos do Paciente</h3>
+          {documents.length > 0 ? (
+            <ul className="list-disc pl-5">
+              {documents.map((doc: any, index: number) => (
+                <li key={index} className="py-2">
+                  <a
+                    href={`${API_BASE_URL}/documentos/${doc.nomeArquivo}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline"
+                  >
+                    {doc.nomeArquivo}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-gray-500">Nenhum documento cadastrado.</p>
+          )}
+        </div> */}
       </div>
     </main>
   );

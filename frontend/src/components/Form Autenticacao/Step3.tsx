@@ -5,6 +5,7 @@ import TextInput from '../TextInput';
 import CheckInput from '../CheckInput';
 import DateInput from '../DateInput';
 import NumberInput from '../NumberInput';
+import { API_BASE_URL } from '@/utils/apiConfig';
 
 type Step3State = {
   possuinis: string;
@@ -77,7 +78,7 @@ const Step3: React.FC<{
 
   const handleTest = async () => {
     try {
-      const teste = await fetch("https://atipicidados-1.onrender.com/pacientes/", {
+      const teste = await fetch(`${API_BASE_URL}/pacientes/`, {
         method: "POST",
         body: JSON.stringify(Step3),
         headers: { 'Content-Type': 'application/json' }

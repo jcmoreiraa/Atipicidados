@@ -1,5 +1,5 @@
 "use client";
-
+import { API_BASE_URL } from "@/utils/apiConfig";
 import Image from "next/image";
 import logos from "../../../public/images/logos.svg";
 import { SlashedEyeIcon, OpenEyeIcon } from "../../../public/icons/Icons";
@@ -51,15 +51,15 @@ export default function Home() {
     let url = ""
     switch (userType) {
       case ("Gerente"):
-        url = "https://atipicidados-1.onrender.com/gerentes/login";
+        url = `${API_BASE_URL}/gerentes/login`;
         localStorage.setItem(userType, 'gerente');
         break;
       case ("Colaborador"):
-        url = "https://atipicidados-1.onrender.com/colaboradores/login"
+        url = `${API_BASE_URL}/colaboradores/login`
         localStorage.setItem(userType, 'colaborador');
         break;
       case ("Paciente"):
-        url = "https://atipicidados-1.onrender.com/pacientes/login"
+        url = `${API_BASE_URL}/pacientes/login`
         localStorage.setItem(userType, 'paciente');
         break;
       default:

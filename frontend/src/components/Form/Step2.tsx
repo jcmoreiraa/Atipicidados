@@ -78,7 +78,7 @@ const Step2: React.FC<{ nextStep: () => void; prevStep: () => void; updateMae: (
 
         <div className='flex flex-col gap-[12px]'>
           <h4 className='pl-2'>Mãe</h4>
-          <button onClick={() => { console.log(Step21); console.log(Step22) }}>Mostrar Respostas</button>
+          {/* <button onClick={() => { console.log(Step21); console.log(Step22) }}>Mostrar Respostas</button> */}
 
           <TextInput placeholder="Nome completo da mãe" value={Step21.nome} onChange={(e) => handleInputChange1("nome", e.target.value)} />
 

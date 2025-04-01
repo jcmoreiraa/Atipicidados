@@ -1,4 +1,5 @@
 "use client";
+import { API_BASE_URL } from "@/utils/apiConfig";
 import { Card } from "@/components/Card";
 import NavBar from "@/components/NavBar";
 import NavBarColaborador from "@/components/NavBarColaborador";
@@ -45,11 +46,11 @@ function Home() {
 
   const fetchData = async () => {
     try {
-      const responseColaborador = await fetch("https://atipicidados-1.onrender.com/colaboradores/getall");
+      const responseColaborador = await fetch(`${API_BASE_URL}/colaboradores/getall`);
       const dataColaborador = await responseColaborador.json();
       setColaboradores(dataColaborador.colaboradores || []);
 
-      const responseGerente = await fetch(`https://atipicidados-1.onrender.com/gerentes/getall/${gerenteId}`, { credentials: 'include' });
+      const responseGerente = await fetch(`${API_BASE_URL}/gerentes/getall/${gerenteId}`, { credentials: 'include' });
       const dataGerente = await responseGerente.json();
       setGerentes(dataGerente.gerentes || []);
     } catch (error) {
@@ -72,7 +73,7 @@ function Home() {
 
   const fetchUnidadeData = async (id: any) => {
     try {
-      const response = await fetch(`https://atipicidados-1.onrender.com/unidades/getUnidadeById/${id}`);
+      const response = await fetch(`${API_BASE_URL}/unidades/getUnidadeById/${id}`);
       if (!response.ok) {
         throw new Error("Failed to fetch unidades data");
       }
