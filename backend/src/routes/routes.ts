@@ -13,6 +13,11 @@ userRouter.use('/unidades', unidadeRouter)
 userRouter.use('/pacientes', pacienteRouter)
 userRouter.use('/colaboradores', colaboradorRouter)
 
+// Health check endpoint
+userRouter.get('/api/health', (req: Request, res: Response) => {
+    res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
 //Demais rotas que faremos
 
 
