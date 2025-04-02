@@ -22,5 +22,5 @@ app.use('/imagens', express.static('uploads/'));
 app.use(userRouter);
 
 app.listen(port, host, () => {
-    console.log(Servidor rodando em http://${host}:${port});
+    console.log(`Servidor rodando em http://${host}:${port}`);
 });
