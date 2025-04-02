@@ -3,7 +3,7 @@ builder = "DOCKERFILE"
 dockerfilePath = "backend/backend.dockerfile"
 
 [deploy]
-startCommand = "NODE_OPTIONS=--max-old-space-size=4096 npx ts-node src/server.ts"
+startCommand = "npx ts-node src/server.ts"
 healthcheckPath = "/"
 healthcheckTimeout = 100
 restartPolicyType = "ON_FAILURE"
