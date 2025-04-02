@@ -1,0 +1,19 @@
+[build]
+builder = "docker"
+
+[deploy]
+start_command = "npm start"
+resources = { cpu = "1", memory = "1GB" }
+
+[[services]]
+port = 3002
+
+[services.http.checks.liveness]
+path = "/health"
+interval = 30
+timeout = 3
+
+[environments.variables]
+NODE_ENV = "production"
+JWT_SECRET = "wifwpejofpejwofjoewpjownwi"
+DATABASE_URL = "postgresql://postgres:zxOEEPelsjclPzsSiqyZWmHDwjXFfAix@postgres.railway.internal:5432/railway"
