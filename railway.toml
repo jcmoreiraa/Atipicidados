@@ -8,7 +8,7 @@ startCommand = "npx prisma generate && npx prisma migrate deploy && npx ts-node 
 
 [deploy.env]
 NODE_ENV = "production"
-NODE_OPTIONS = "--max-old-space-size=4096"
 PORT = "3002"
 HOST = "0.0.0.0"
 DATABASE_URL = "postgresql://postgres:zxOEEPelsjclPzsSiqyZWmHDwjXFfAix@postgres.railway.internal:5432/railway"
+
