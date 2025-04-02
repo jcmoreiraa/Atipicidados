@@ -4,11 +4,14 @@ dockerfilePath = "backend/backend.dockerfile"
 
 [deploy]
 startCommand = "npx prisma generate && npx prisma migrate deploy && npx ts-node src/server.ts"
-
+healthcheckPath = "/api/health"
+healthcheckTimeout = 300
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
 
 [deploy.env]
 NODE_ENV = "production"
 NODE_OPTIONS = "--max-old-space-size=4096"
 PORT = "3002"
 HOST = "0.0.0.0"
-DATABASE_URL = "postgresql://postgres:zxOEEPelsjclPzsSiqyZWmHDwjXFfAix@postgres.railway.internal:5432/railway"
+DATABASE_URL = "postgresql://postgres:postgres@localhost:5432/atipicidados"
