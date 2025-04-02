@@ -1,5 +1,5 @@
 [build]
-builder = "dockerfile"
+builder = "backend.dockerfile"
 
 [deploy]
 start_command = "npm start"
