@@ -1,6 +1,6 @@
 [build]
 builder = "DOCKERFILE"
-dockerfilePath = "Dockerfile"
+dockerfilePath = "backend/Dockerfile"
 
 [deploy]
 startCommand = "NODE_OPTIONS='--max-old-space-size=4096' npx ts-node src/server.ts"
