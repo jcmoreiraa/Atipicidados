@@ -11,7 +11,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({
-    origin: 'https://capable-determination-production.up.railway.app/', 
+    origin: 'https://atipicidades-ssks.vercel.app', 
     credentials: true 
 }));
 app.use(cookieParser());
