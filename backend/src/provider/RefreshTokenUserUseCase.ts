@@ -26,13 +26,13 @@ class RefreshTokenUserUseCase {
             throw new Error("Nenhum usuário válido associado ao refresh token");
         }
 
-        const newExpireIn = dayjs().add(30, "seconds").unix();
+        const newExpireIn = dayjs().add(900, "seconds").unix();
         await prisma.refreshToken.update({
             where: { id: refresh_token },
             data: { expireIn: newExpireIn },
         });
 
-        const token = jwt.sign({ userId }, JWT_SECRET, { expiresIn: "10s" });
+        const token = jwt.sign({ userId }, JWT_SECRET, { expiresIn: "900s" });
 
         return { token, newExpireIn, userId };
     }
