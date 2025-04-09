@@ -143,7 +143,7 @@ export const gerenteLogin = async (request: Request, response: Response) => {
         }
 
         const token = jwt.sign({ userId: userGerente.id }, JWT_SECRET, {
-            expiresIn: '10s',
+            expiresIn: '900s',
         });
 
         response.cookie('token', token, {
